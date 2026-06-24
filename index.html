@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pāli Chant — 巴利语唱诵精听与发音学习工具</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/common.css">
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a href="#" class="logo">Pāli <em>Chant</em></a>
+    <div class="links">
+      <a href="#features">功能</a>
+      <a href="#tech">技术栈</a>
+      <a href="#users">适用人群</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── Hero ─── -->
+<header class="hero">
+  <span class="hero-badge">巴利语学习工具 · MVP</span>
+  <h1>音文同步，逐词<em>精听</em></h1>
+  <p>一款专为巴利语学习者设计的轻量级唱诵辅助工具 —— 单词级精准高亮、循环精听、离线可用，让古老的唱诵在指尖逐词流淌。</p>
+  <div class="actions">
+    <a href="#features" class="btn btn-primary">了解功能</a>
+    <a href="#tech" class="btn btn-outline">技术栈</a>
+  </div>
+  <div class="scroll-hint">
+    <svg width="20" height="28" viewBox="0 0 20 28" fill="none" stroke="#8a7e6e" stroke-width="1.5">
+      <rect x="2" y="2" width="16" height="24" rx="8"/>
+      <circle cx="10" cy="9" r="2" fill="#8a7e6e"/>
+    </svg>
+  </div>
+</header>
+
+<!-- ─── Features ─── -->
+<section id="features">
+  <div class="inner">
+    <div class="reveal">
+      <h2>逐词同步，所见即所听</h2>
+      <p class="subtitle">巴利语长句连诵时，再也不怕找不到读到哪。</p>
+    </div>
+
+    <!-- Interactive Demo -->
+    <div class="visual-demo reveal" id="demo">
+      <p class="line" id="demo-line">
+        <span class="word dim">Namo</span>
+        <span class="word dim">tassa</span>
+        <span class="word dim">bhagavato</span>
+        <span class="word dim">arahato</span>
+        <span class="word active">sammā</span>
+        <span class="word">sambuddhassa</span>
+      </p>
+      <div class="demo-controls">
+        <button class="demo-btn" id="demo-play-btn" title="播放 / 暂停">▶</button>
+        <div class="demo-label" id="demo-word-label">sammā</div>
+        <div class="demo-progress">
+          <div class="demo-progress-bar" id="demo-progress-bar"></div>
+        </div>
+      </div>
+      <div class="status-badges">
+        <span class="status-badge"><span class="status-dot playing"></span> 播放中</span>
+        <span class="status-badge"><span class="status-dot played"></span> 已播放</span>
+        <span class="status-badge"><span class="status-dot pending"></span> 未播放</span>
+      </div>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <span class="icon">🎯</span>
+        <h3>单词级高亮</h3>
+        <p>基于 JSON 时间戳，音频播放时逐词精准同步，彻底解决"找不到读到哪"的痛点。</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="icon">🎧</span>
+        <h3>四维交互精听</h3>
+        <p>单击跳转、双击循环、R 键重播、空格暂停 —— 适应不同学习场景的无缝切换。</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="icon">📜</span>
+        <h3>唱诵段落结构化</h3>
+        <p>按偈颂（Gāthā）分段展示，保留韵律换行，而非简单堆砌为纯文本块。</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="icon">📱</span>
+        <h3>Electron + PWA 双端</h3>
+        <p>桌面端与移动端共享同一套代码，交互逻辑与同步精度完全一致。</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="icon">🪶</span>
+        <h3>极致轻量离线</h3>
+        <p>安装包 &lt; 80MB，首次加载后完全离线可用。无广告、无追踪、无账号。</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="icon">🔤</span>
+        <h3>巴利语专属字体</h3>
+        <p>内置字体回退链，确保 ṃ ṇ ṭ ḍ ū ī 等转写字母在所有设备上正确渲染。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Tech Stack ─── -->
+<section id="tech">
+  <div class="inner">
+    <div class="reveal">
+      <h2>技术栈</h2>
+      <p class="subtitle">纯静态架构，零服务端依赖，极致轻量与隐私安全。</p>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-item reveal">
+        <span class="label">桌面端</span>
+        <span class="arrow">→</span>
+        <span class="value">Electron + Vite</span>
+      </div>
+      <div class="tech-item reveal">
+        <span class="label">前端</span>
+        <span class="arrow">→</span>
+        <span class="value">Vanilla JS / Vue3</span>
+      </div>
+      <div class="tech-item reveal">
+        <span class="label">音频引擎</span>
+        <span class="arrow">→</span>
+        <span class="value">Web Audio API</span>
+      </div>
+      <div class="tech-item reveal">
+        <span class="label">数据格式</span>
+        <span class="arrow">→</span>
+        <span class="value">{ word, start, end } JSON</span>
+      </div>
+      <div class="tech-item reveal">
+        <span class="label">移动端</span>
+        <span class="arrow">→</span>
+        <span class="value">PWA (Service Worker)</span>
+      </div>
+      <div class="tech-item reveal">
+        <span class="label">托管</span>
+        <span class="arrow">→</span>
+        <span class="value">Cloudflare Pages</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Users ─── -->
+<section id="users">
+  <div class="inner">
+    <div class="reveal">
+      <h2>适用人群</h2>
+      <p class="subtitle">无论你是初学者还是研究者，都能从中受益。</p>
+    </div>
+    <div class="users-grid">
+      <div class="user-card reveal">
+        <h3>📖 巴利语初学者</h3>
+        <p>需要反复听辨字母发音、掌握基础拼读规则的入门者。</p>
+      </div>
+      <div class="user-card reveal">
+        <h3>🧘 南传佛教修行者</h3>
+        <p>日常课诵、禅修前唱诵，需要精准的文本对照与节奏跟随。</p>
+      </div>
+      <div class="user-card reveal">
+        <h3>🎓 佛学院学生 / 研究者</h3>
+        <p>精研《法句经》《护卫经》等经典的语音细节，需要单词级回溯能力。</p>
+      </div>
+      <div class="user-card reveal">
+        <h3>🗣️ 语言爱好者</h3>
+        <p>对印欧语系古老语言的音韵学感兴趣，感受巴利语的韵律美。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Philosophy ─── -->
+<section id="philosophy">
+  <div class="inner">
+    <div class="reveal">
+      <h2>设计哲学</h2>
+      <p class="subtitle">克制、专注、尊重内容。</p>
+    </div>
+    <div class="philosophy-grid">
+      <div class="philo-item reveal">
+        <div class="big">🔌</div>
+        <h3>纯离线可用</h3>
+        <p>适合禅修中心、寺院等无网络环境</p>
+      </div>
+      <div class="philo-item reveal">
+        <div class="big">💰</div>
+        <h3>零运维成本</h3>
+        <p>无服务器、无数据库、无 SSL 费用</p>
+      </div>
+      <div class="philo-item reveal">
+        <div class="big">🔒</div>
+        <h3>隐私安全</h3>
+        <p>无网络请求，无数据收集，无账号体系</p>
+      </div>
+      <div class="philo-item reveal">
+        <div class="big">📱</div>
+        <h3>跨端一致</h3>
+        <p>桌面端与移动端体验完全一致</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Pāli Chant · 巴利语唱诵精听与发音学习工具</p>
+  <p style="margin-top: 4px;">以 MIT 协议开源 · 构建于 <a href="#">GitHub</a></p>
+</footer>
+
+<script>
+  // ─── Scroll reveal ───
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ─── Interactive Demo ───
+  const words = [
+    'Namo', 'tassa', 'bhagavato', 'arahato', 'sammā', 'sambuddhassa'
+  ];
+  const wordEls = document.querySelectorAll('#demo-line .word');
+  const bar = document.getElementById('demo-progress-bar');
+  const label = document.getElementById('demo-word-label');
+  const playBtn = document.getElementById('demo-play-btn');
+
+  let current = 4;
+  let playing = false;
+  let timer = null;
+
+  function updateDemo(idx) {
+    wordEls.forEach((el, i) => {
+      el.classList.remove('active', 'dim');
+      if (i < idx) el.classList.add('dim');
+    });
+    wordEls[idx].classList.add('active');
+    label.textContent = words[idx];
+    bar.style.width = ((idx + 1) / words.length * 100) + '%';
+    current = idx;
+  }
+
+  function step() {
+    if (!playing) return;
+    const next = (current + 1) % words.length;
+    updateDemo(next);
+    if (next === 0) { playing = false; playBtn.textContent = '▶'; return; }
+    timer = setTimeout(step, 900);
+  }
+
+  playBtn.addEventListener('click', () => {
+    if (playing) {
+      playing = false;
+      clearTimeout(timer);
+      playBtn.textContent = '▶';
+      return;
+    }
+    playing = true;
+    playBtn.textContent = '⏸';
+    if (current === words.length - 1) updateDemo(0);
+    timer = setTimeout(step, 900);
+  });
+
+  wordEls.forEach((el, i) => {
+    el.addEventListener('click', () => {
+      if (playing) { clearTimeout(timer); playing = false; playBtn.textContent = '▶'; }
+      updateDemo(i);
+    });
+  });
+
+  // Keyboard shortcut
+  document.addEventListener('keydown', (e) => {
+    if (e.code === 'Space') { e.preventDefault(); playBtn.click(); }
+  });
+</script>
+</body>
+</html>

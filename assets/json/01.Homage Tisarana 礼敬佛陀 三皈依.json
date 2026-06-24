@@ -1,0 +1,422 @@
+[
+  {
+    "word_id": "1",
+    "segment_id": "1",
+    "pali_roman": "Sādhu",
+    "start_time": "0.168504",
+    "end_time": "2.190553"
+  },
+  {
+    "word_id": "2",
+    "segment_id": "1",
+    "pali_roman": "Sādhu",
+    "start_time": "2.628663",
+    "end_time": "4.482208"
+  },
+  {
+    "word_id": "3",
+    "segment_id": "1",
+    "pali_roman": "Sādhu",
+    "start_time": "4.987720",
+    "end_time": "7.178272"
+  },
+  {
+    "word_id": "4",
+    "segment_id": "2",
+    "pali_roman": "Namo",
+    "start_time": "7.835438",
+    "end_time": "9.234022"
+  },
+  {
+    "word_id": "5",
+    "segment_id": "2",
+    "pali_roman": "tassa",
+    "start_time": "9.301423",
+    "end_time": "10.733708"
+  },
+  {
+    "word_id": "6",
+    "segment_id": "2",
+    "pali_roman": "bhagavato",
+    "start_time": "10.750558",
+    "end_time": "12.688355"
+  },
+  {
+    "word_id": "7",
+    "segment_id": "2",
+    "pali_roman": "arahato",
+    "start_time": "12.705205",
+    "end_time": "14.626151"
+  },
+  {
+    "word_id": "8",
+    "segment_id": "2",
+    "pali_roman": "sammā",
+    "start_time": "14.963159",
+    "end_time": "16.563948"
+  },
+  {
+    "word_id": "9",
+    "segment_id": "2",
+    "pali_roman": "sam",
+    "start_time": "16.631350",
+    "end_time": "17.237964"
+  },
+  {
+    "word_id": "10",
+    "segment_id": "2",
+    "pali_roman": "buddhassa",
+    "start_time": "17.271665",
+    "end_time": "18.889304"
+  },
+  {
+    "word_id": "11",
+    "segment_id": "3",
+    "pali_roman": "Namo",
+    "start_time": "19.462218",
+    "end_time": "20.793400"
+  },
+  {
+    "word_id": "12",
+    "segment_id": "3",
+    "pali_roman": "tassa",
+    "start_time": "20.843951",
+    "end_time": "22.158282"
+  },
+  {
+    "word_id": "13",
+    "segment_id": "3",
+    "pali_roman": "bhagavato",
+    "start_time": "22.191983",
+    "end_time": "23.994976"
+  },
+  {
+    "word_id": "14",
+    "segment_id": "3",
+    "pali_roman": "arahato",
+    "start_time": "24.045528",
+    "end_time": "25.713718"
+  },
+  {
+    "word_id": "15",
+    "segment_id": "3",
+    "pali_roman": "sammā",
+    "start_time": "26.151828",
+    "end_time": "27.735766"
+  },
+  {
+    "word_id": "16",
+    "segment_id": "3",
+    "pali_roman": "sam",
+    "start_time": "27.820018",
+    "end_time": "28.291830"
+  },
+  {
+    "word_id": "17",
+    "segment_id": "3",
+    "pali_roman": "buddhassa",
+    "start_time": "28.325530",
+    "end_time": "29.816791"
+  },
+  {
+    "word_id": "18",
+    "segment_id": "4",
+    "pali_roman": "Namo",
+    "start_time": "30.591910",
+    "end_time": "31.838840"
+  },
+  {
+    "word_id": "19",
+    "segment_id": "4",
+    "pali_roman": "tassa",
+    "start_time": "31.872541",
+    "end_time": "33.195297"
+  },
+  {
+    "word_id": "20",
+    "segment_id": "4",
+    "pali_roman": "bhagavato",
+    "start_time": "33.523880",
+    "end_time": "35.225771"
+  },
+  {
+    "word_id": "21",
+    "segment_id": "4",
+    "pali_roman": "arahato",
+    "start_time": "35.234196",
+    "end_time": "36.700182"
+  },
+  {
+    "word_id": "22",
+    "segment_id": "4",
+    "pali_roman": "sammā",
+    "start_time": "37.155143",
+    "end_time": "38.722230"
+  },
+  {
+    "word_id": "23",
+    "segment_id": "4",
+    "pali_roman": "sam",
+    "start_time": "38.739081",
+    "end_time": "39.337270"
+  },
+  {
+    "word_id": "24",
+    "segment_id": "4",
+    "pali_roman": "buddhassa",
+    "start_time": "39.345695",
+    "end_time": "40.921208"
+  },
+  {
+    "word_id": "25",
+    "segment_id": "5",
+    "pali_roman": "Buddhaṁ",
+    "start_time": "42.142862",
+    "end_time": "43.128611"
+  },
+  {
+    "word_id": "26",
+    "segment_id": "5",
+    "pali_roman": "saranaṁ",
+    "start_time": "43.137036",
+    "end_time": "44.451368"
+  },
+  {
+    "word_id": "27",
+    "segment_id": "5",
+    "pali_roman": "gacchāmi",
+    "start_time": "44.485069",
+    "end_time": "46.490267"
+  },
+  {
+    "word_id": "28",
+    "segment_id": "6",
+    "pali_roman": "Dhammaṁ",
+    "start_time": "47.071606",
+    "end_time": "48.369087"
+  },
+  {
+    "word_id": "29",
+    "segment_id": "6",
+    "pali_roman": "saranaṁ",
+    "start_time": "48.512315",
+    "end_time": "49.733970"
+  },
+  {
+    "word_id": "30",
+    "segment_id": "6",
+    "pali_roman": "gacchāmi",
+    "start_time": "49.843497",
+    "end_time": "51.840270"
+  },
+  {
+    "word_id": "31",
+    "segment_id": "7",
+    "pali_roman": "Saṅghaṁ",
+    "start_time": "52.514287",
+    "end_time": "53.853894"
+  },
+  {
+    "word_id": "32",
+    "segment_id": "7",
+    "pali_roman": "saranaṁ",
+    "start_time": "53.896020",
+    "end_time": "55.210351"
+  },
+  {
+    "word_id": "33",
+    "segment_id": "7",
+    "pali_roman": "gacchāmi",
+    "start_time": "55.260902",
+    "end_time": "57.266101"
+  },
+  {
+    "word_id": "34",
+    "segment_id": "8",
+    "pali_roman": "Dutiyam",
+    "start_time": "57.881140",
+    "end_time": "59.818937"
+  },
+  {
+    "word_id": "35",
+    "segment_id": "8",
+    "pali_roman": "Buddhaṁ",
+    "start_time": "59.877913",
+    "end_time": "61.015316"
+  },
+  {
+    "word_id": "36",
+    "segment_id": "8",
+    "pali_roman": "saranaṁ",
+    "start_time": "61.124843",
+    "end_time": "62.321222"
+  },
+  {
+    "word_id": "37",
+    "segment_id": "8",
+    "pali_roman": "gacchāmi",
+    "start_time": "62.573978",
+    "end_time": "64.671854"
+  },
+  {
+    "word_id": "38",
+    "segment_id": "9",
+    "pali_roman": "Dutiyam",
+    "start_time": "65.202641",
+    "end_time": "67.148863"
+  },
+  {
+    "word_id": "39",
+    "segment_id": "9",
+    "pali_roman": "Dhammaṁ",
+    "start_time": "67.199414",
+    "end_time": "68.404218"
+  },
+  {
+    "word_id": "40",
+    "segment_id": "9",
+    "pali_roman": "saranaṁ",
+    "start_time": "68.446344",
+    "end_time": "69.794377"
+  },
+  {
+    "word_id": "41",
+    "segment_id": "9",
+    "pali_roman": "gacchāmi",
+    "start_time": "69.971306",
+    "end_time": "72.203985"
+  },
+  {
+    "word_id": "42",
+    "segment_id": "10",
+    "pali_roman": "Dutiyam",
+    "start_time": "72.633670",
+    "end_time": "74.546191"
+  },
+  {
+    "word_id": "43",
+    "segment_id": "10",
+    "pali_roman": "Saṅghaṁ",
+    "start_time": "74.680994",
+    "end_time": "75.961625"
+  },
+  {
+    "word_id": "44",
+    "segment_id": "10",
+    "pali_roman": "saranaṁ",
+    "start_time": "76.045877",
+    "end_time": "77.292807"
+  },
+  {
+    "word_id": "45",
+    "segment_id": "10",
+    "pali_roman": "gacchāmi",
+    "start_time": "77.528712",
+    "end_time": "79.635013"
+  },
+  {
+    "word_id": "46",
+    "segment_id": "11",
+    "pali_roman": "Tatiyam",
+    "start_time": "80.250053",
+    "end_time": "82.255251"
+  },
+  {
+    "word_id": "47",
+    "segment_id": "11",
+    "pali_roman": "Buddhaṁ",
+    "start_time": "82.288952",
+    "end_time": "83.460055"
+  },
+  {
+    "word_id": "48",
+    "segment_id": "11",
+    "pali_roman": "saranaṁ",
+    "start_time": "83.535882",
+    "end_time": "84.791237"
+  },
+  {
+    "word_id": "49",
+    "segment_id": "11",
+    "pali_roman": "gacchāmi",
+    "start_time": "84.993442",
+    "end_time": "87.192420"
+  },
+  {
+    "word_id": "50",
+    "segment_id": "12",
+    "pali_roman": "Tatiyam",
+    "start_time": "87.622105",
+    "end_time": "89.543051"
+  },
+  {
+    "word_id": "51",
+    "segment_id": "12",
+    "pali_roman": "Dhammaṁ",
+    "start_time": "89.576752",
+    "end_time": "90.907934"
+  },
+  {
+    "word_id": "52",
+    "segment_id": "12",
+    "pali_roman": "saranaṁ",
+    "start_time": "90.941635",
+    "end_time": "92.340218"
+  },
+  {
+    "word_id": "53",
+    "segment_id": "12",
+    "pali_roman": "gacchāmi",
+    "start_time": "92.399195",
+    "end_time": "94.783527"
+  },
+  {
+    "word_id": "54",
+    "segment_id": "13",
+    "pali_roman": "Tatiyam",
+    "start_time": "94.994157",
+    "end_time": "97.007780"
+  },
+  {
+    "word_id": "55",
+    "segment_id": "13",
+    "pali_roman": "Saṅghaṁ",
+    "start_time": "97.075182",
+    "end_time": "98.414789"
+  },
+  {
+    "word_id": "56",
+    "segment_id": "13",
+    "pali_roman": "saranaṁ",
+    "start_time": "98.456915",
+    "end_time": "99.796522"
+  },
+  {
+    "word_id": "57",
+    "segment_id": "13",
+    "pali_roman": "gacchāmi",
+    "start_time": "99.939751",
+    "end_time": "102.383059"
+  },
+  {
+    "word_id": "58",
+    "segment_id": "14",
+    "pali_roman": "Sādhu",
+    "start_time": "102.905422",
+    "end_time": "104.657864"
+  },
+  {
+    "word_id": "59",
+    "segment_id": "14",
+    "pali_roman": "Sādhu",
+    "start_time": "104.919045",
+    "end_time": "106.654637"
+  },
+  {
+    "word_id": "60",
+    "segment_id": "14",
+    "pali_roman": "Sādhu",
+    "start_time": "107.016921",
+    "end_time": "108.828339"
+  }
+]

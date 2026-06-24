@@ -1,0 +1,145 @@
+/* ─── Demo player — 唱诵精听演示专用样式 ─── */
+
+html, body { height: 100%; }
+
+#app {
+  display: flex; height: 100vh;
+}
+
+/* ─── Sidebar ─── */
+.sidebar {
+  width: 240px; flex-shrink: 0;
+  background: var(--sand);
+  border-right: 1px solid var(--sand-dark);
+  display: flex; flex-direction: column;
+  overflow-y: auto;
+}
+.sidebar-header {
+  padding: 20px 16px 12px;
+  font-weight: 700; font-size: 0.95rem;
+  border-bottom: 1px solid var(--sand-dark);
+}
+.sidebar-header em { font-style: normal; color: var(--gold); }
+.sidebar-header small {
+  display: block; font-weight: 400; font-size: 0.72rem;
+  color: var(--muted); margin-top: 2px;
+}
+.track-list { flex: 1; overflow-y: auto; padding: 8px; }
+.track-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: 8px;
+  cursor: pointer; transition: all 0.15s;
+  font-size: 0.82rem; line-height: 1.3;
+}
+.track-item:hover { background: var(--sand-dark); }
+.track-item.active {
+  background: var(--gold-light); color: white;
+}
+.track-item .num {
+  font-weight: 600; font-size: 0.75rem;
+  color: var(--muted); min-width: 20px;
+}
+.track-item.active .num { color: rgba(255,255,255,0.7); }
+.track-status {
+  margin-left: auto; flex-shrink: 0;
+  font-size: 0.65rem; padding: 2px 8px;
+  border-radius: 10px; font-weight: 500;
+}
+.track-status.ok {
+  background: #e6f7e6; color: #2e7d32;
+}
+.track-status.na {
+  background: var(--sand-dark); color: var(--muted);
+}
+
+/* ─── Main panel ─── */
+.main {
+  flex: 1; display: flex; flex-direction: column;
+  padding: 32px 40px; overflow-y: auto;
+  min-width: 0;
+}
+@media (max-width: 700px) {
+  .main { padding: 24px 20px; }
+  .sidebar { width: 180px; }
+}
+
+.track-title {
+  font-size: 1.1rem; font-weight: 600; margin-bottom: 4px;
+}
+.track-meta {
+  font-size: 0.82rem; color: var(--muted); margin-bottom: 28px;
+}
+
+/* ─── Banner ─── */
+.banner {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.88rem;
+  padding: 12px 18px; border-radius: 10px;
+  margin-bottom: 24px;
+}
+.banner-info {
+  background: #f0f7ff; color: #1a5a8c;
+  border: 1px solid #d0e4f7;
+}
+
+/* ─── Player ─── */
+.player {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 28px;
+  padding: 16px 20px;
+  background: var(--sand); border-radius: 12px;
+}
+.btn-play {
+  width: 44px; height: 44px; border-radius: 50%;
+  border: none; cursor: pointer;
+  background: var(--ink); color: white;
+  font-size: 1.1rem; display: grid; place-items: center;
+  transition: all 0.2s; flex-shrink: 0;
+}
+.btn-play:hover { background: #3d3222; transform: scale(1.04); }
+.progress-wrap {
+  flex: 1; display: flex; align-items: center; gap: 12px;
+}
+.progress-bar {
+  flex: 1; height: 4px; border-radius: 2px;
+  background: var(--sand-dark); position: relative; cursor: pointer;
+}
+.progress-fill {
+  position: absolute; left: 0; top: 0; height: 100%;
+  background: var(--gold); border-radius: 2px;
+  transition: width 0.1s linear;
+}
+.time {
+  font-size: 0.8rem; color: var(--muted);
+  font-variant-numeric: tabular-nums; min-width: 80px;
+}
+
+/* ─── Word text display ─── */
+.text-area {
+  flex: 1; min-height: 0;
+  overflow-y: auto; padding: 4px 0;
+}
+.segment { margin-bottom: 20px; }
+.segment:last-child { margin-bottom: 0; }
+.word {
+  display: inline; padding: 2px 3px; border-radius: 4px;
+  cursor: default; transition: all 0.15s;
+  font-size: 1.05rem; line-height: 2;
+}
+.word.dim { color: var(--muted); }
+.word.active {
+  background: var(--gold-light); color: white;
+  box-shadow: 0 2px 8px rgba(184,134,11,0.3);
+}
+.word.clickable { cursor: pointer; }
+.word.clickable:hover { background: var(--sand-dark); }
+.word.active:hover { background: var(--gold); }
+
+/* ─── Empty state ─── */
+.empty-state {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  color: var(--muted); text-align: center;
+}
+.empty-state .icon { font-size: 2.4rem; margin-bottom: 12px; }
+.empty-state p { font-size: 0.92rem; }

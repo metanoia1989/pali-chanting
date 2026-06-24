@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pāli Chant · 唱诵精听演示</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="./assets/css/common.css">
+  <link rel="stylesheet" href="./assets/css/play.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      Pāli <em>Chant</em>
+      <small>唱诵精听演示</small>
+    </div>
+    <div class="track-list">
+      <div v-for="t in tracks"
+           :key="t.id"
+           class="track-item"
+           :class="{ active: current?.id === t.id }"
+           @click="selectTrack(t)">
+        <span class="num">{{ t.id }}</span>
+        <span class="track-name">{{ t.name }}</span>
+        <span class="track-status" :class="t.hasJson ? 'ok' : 'na'">
+          {{ t.hasJson ? '高亮' : '暂无' }}
+        </span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <div v-if="!current" class="empty-state">
+      <div class="icon">🎧</div>
+      <p>从左侧选择一个唱诵开始精听</p>
+    </div>
+
+    <template v-else>
+      <div class="track-title">{{ current.name }}</div>
+      <div class="track-meta">{{ current.id }} · {{ current.hasJson ? '单词级高亮' : '暂无时间戳标注' }}</div>
+
+      <!-- Banner: 此音频暂无高亮 -->
+      <div v-if="!current.hasJson" class="banner banner-info">
+        <span>ℹ️</span>
+        <span>此音频暂无高亮 — 时间戳尚未处理完成，仍可正常播放。</span>
+      </div>
+
+      <!-- Player -->
+      <div class="player">
+        <button class="btn-play" @click="togglePlay" :disabled="!audioReady">
+          {{ playing ? '⏸' : '▶' }}
+        </button>
+        <div class="progress-wrap">
+          <div class="progress-bar" ref="progressBar" @click="seek">
+            <div class="progress-fill" :style="{ width: progressPct + '%' }"></div>
+          </div>
+          <span class="time">{{ fmtTime(currentTime) }} / {{ fmtTime(duration) }}</span>
+        </div>
+      </div>
+
+      <!-- Word text -->
+      <div class="text-area" ref="textAreaEl">
+        <div v-if="current.hasJson && segments.length">
+          <div v-for="(seg, si) in segments" :key="si" class="segment">
+            <span v-for="(w, wi) in seg.words"
+                  :key="wi"
+                  class="word"
+                  :class="{ dim: wordStatus(seg, wi) === 'dim', active: wordStatus(seg, wi) === 'active', clickable: current.hasJson }"
+                  :ref="el => { if (el && wordStatus(seg, wi) === 'active') activeWordEl = el }"
+                  @click="current.hasJson && seekTo(w.start)">
+              {{ w.word }}<span v-if="wi < seg.words.length - 1"> </span>
+            </span>
+          </div>
+        </div>
+        <div v-else style="color: var(--ink-light); font-size: 1rem; line-height: 1.8; white-space: pre-wrap;">
+          {{ paliText }}
+        </div>
+      </div>
+    </template>
+  </main>
+
+</div>
+
+<script>
+const { createApp, ref, computed, onMounted, onUnmounted, nextTick } = Vue;
+
+// ─── Track definitions (exact filenames from filesystem) ───
+const tracks = [
+  { id: '01', name: 'Homage Tisarana · 礼敬佛陀 三皈依',
+    audio: '01.Homage Tisarana 礼敬佛陀 三皈依.mp3',
+    json: '01.Homage Tisarana 礼敬佛陀 三皈依.json', hasJson: true },
+  { id: '02', name: 'Main Puja · 佛随念 礼敬七佛',
+    audio: '02.Main Puja 佛随念 礼敬七佛.mp3',
+    json: null, hasJson: false },
+  { id: '03', name: 'Inviting the Devas · 邀请诸天',
+    audio: '03.inviting the Devas 邀请诸天.mp3',
+    json: null, hasJson: false },
+  { id: '04', name: 'Maha Maṅgala Sutta · 大吉祥经',
+    audio: '04.Maha Maṅgala Suttaṁ 大吉祥经.mp3',
+    json: null, hasJson: false },
+  { id: '05', name: 'Ratana Suttam · 珍宝经',
+    audio: '05.Ratana Suttam 珍宝经.mp3',
+    json: null, hasJson: false },
+  { id: '06', name: 'Karaṇīya Metta Sutta · 应行慈爱经',
+    audio: '06.Karaniya metta Sutta 应行慈爱经.mp3',
+    json: null, hasJson: false },
+  { id: '07', name: 'Kammā Vācanā · 请求宽恕',
+    audio: '07.Kammā Vācanā  请求宽恕.mp3',
+    json: null, hasJson: false },
+];
+
+createApp({
+  setup() {
+    const current = ref(null);
+    const playing = ref(false);
+    const audioReady = ref(false);
+    const currentTime = ref(0);
+    const duration = ref(0);
+    const segments = ref([]);
+    const paliText = ref('');
+    const progressBar = ref(null);
+    const textAreaEl = ref(null);
+    const activeWordEl = ref(null);
+
+    let audio = null;
+    let rafId = null;
+
+    const progressPct = computed(() => {
+      if (!duration.value) return 0;
+      return (currentTime.value / duration.value) * 100;
+    });
+
+    function wordStatus(seg, wi) {
+      if (!current.value?.hasJson || !seg.words[wi]) return '';
+      const w = seg.words[wi];
+      if (w.end <= currentTime.value) return 'dim';
+      if (w.start <= currentTime.value && currentTime.value < w.end) return 'active';
+      return '';
+    }
+
+    function fmtTime(t) {
+      if (!t || isNaN(t)) return '00:00';
+      const m = Math.floor(t / 60);
+      const s = Math.floor(t % 60);
+      return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+    }
+
+    function initAudio(src) {
+      if (audio) {
+        audio.pause();
+        audio.src = '';
+        cancelAnimationFrame(rafId);
+        playing.value = false;
+        audioReady.value = false;
+      }
+      audio = new Audio(src);
+      audio.preload = 'auto';
+
+      audio.addEventListener('loadedmetadata', () => {
+        duration.value = audio.duration || 0;
+        audioReady.value = true;
+      });
+      audio.addEventListener('play', () => { playing.value = true; startSync(); });
+      audio.addEventListener('pause', () => { playing.value = false; stopSync(); });
+      audio.addEventListener('ended', () => {
+        playing.value = false;
+        currentTime.value = duration.value;
+        stopSync();
+      });
+      audio.addEventListener('timeupdate', () => {
+        currentTime.value = audio.currentTime;
+      });
+    }
+
+    function startSync() {
+      stopSync();
+      function tick() {
+        if (audio && !audio.paused) {
+          currentTime.value = audio.currentTime;
+        }
+        rafId = requestAnimationFrame(tick);
+      }
+      rafId = requestAnimationFrame(tick);
+    }
+
+    function stopSync() {
+      if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+    }
+
+    async function selectTrack(track) {
+      if (current.value && current.value.id === track.id) return;
+      current.value = track;
+      segments.value = [];
+      paliText.value = '';
+
+      if (track.hasJson) {
+        try {
+          const resp = await fetch('./assets/json/' + track.json);
+          if (!resp.ok) throw new Error('JSON not found — ' + resp.status);
+          const data = await resp.json();
+          // Data is a flat list: [{word_id, segment_id, pali_roman, start_time, end_time}, ...]
+          // Group by segment_id, map field names
+          const grouped = {};
+          for (const w of data) {
+            const sid = w.segment_id || '1';
+            if (!grouped[sid]) grouped[sid] = [];
+            grouped[sid].push({
+              word: w.pali_roman,
+              start: parseFloat(w.start_time),
+              end: parseFloat(w.end_time)
+            });
+          }
+          // Sort segments by numeric segment_id
+          const sorted = Object.entries(grouped)
+            .sort((a, b) => parseInt(a[0]) - parseInt(b[0]));
+          segments.value = sorted.map(([_, words]) => ({ words }));
+        } catch (e) {
+          console.warn('Failed to load JSON:', e);
+          segments.value = [];
+        }
+      } else {
+        try {
+          const txtName = track.audio.replace('.mp3', '.txt');
+          const resp = await fetch('./assets/pali/' + txtName);
+          if (resp.ok) paliText.value = await resp.text();
+        } catch (e) { /* ignore */ }
+      }
+
+      initAudio('./assets/audio/' + track.audio);
+    }
+
+    function togglePlay() {
+      if (!audio || !audioReady.value) return;
+      if (audio.paused) {
+        audio.play().catch(() => {});
+      } else {
+        audio.pause();
+      }
+    }
+
+    function seek(e) {
+      if (!audio || !duration.value) return;
+      const rect = progressBar.value.getBoundingClientRect();
+      const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+      audio.currentTime = pct * duration.value;
+    }
+
+    function seekTo(time) {
+      if (!audio) return;
+      audio.currentTime = time;
+      if (audio.paused) audio.play().catch(() => {});
+    }
+
+    // Scroll active word into view
+    let lastActiveEl = null;
+    function scrollActive() {
+      nextTick(() => {
+        const el = activeWordEl.value;
+        if (el && el !== lastActiveEl && textAreaEl.value) {
+          lastActiveEl = el;
+          const container = textAreaEl.value;
+          const cr = container.getBoundingClientRect();
+          const er = el.getBoundingClientRect();
+          if (er.top < cr.top + 80 || er.bottom > cr.bottom - 40) {
+            el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          }
+        }
+      });
+    }
+
+    // Poll for active word changes to scroll
+    onMounted(() => {
+      let lastIdx = -1;
+      setInterval(() => {
+        if (!current.value?.hasJson || !segments.value.length) return;
+        let idx = 0;
+        outer: for (const seg of segments.value) {
+          for (const w of seg.words) {
+            if (w.start <= currentTime.value && currentTime.value < w.end) {
+              break outer;
+            }
+            idx++;
+          }
+        }
+        if (idx !== lastIdx) { lastIdx = idx; scrollActive(); }
+      }, 250);
+    });
+
+    // Keyboard shortcut
+    function onKey(e) {
+      if (e.code === 'Space' && current.value) {
+        e.preventDefault();
+        togglePlay();
+      }
+    }
+    document.addEventListener('keydown', onKey);
+    onUnmounted(() => {
+      document.removeEventListener('keydown', onKey);
+      if (audio) { audio.pause(); audio.src = ''; }
+      stopSync();
+    });
+
+    return {
+      tracks, current, playing, audioReady,
+      currentTime, duration, segments, paliText,
+      progressPct, progressBar, textAreaEl, activeWordEl,
+      selectTrack, togglePlay, seek, seekTo,
+      wordStatus, fmtTime,
+    };
+  }
+}).mount('#app');
+</script>
+</body>
+</html>
