@@ -44,7 +44,7 @@
       <div class="track-title">{{ current.name }}</div>
       <div class="track-meta">{{ current.id }} · {{ current.hasJson ? '单词级高亮' : '暂无时间戳标注' }}</div>
 
-      <!-- Banner: 此音频暂无高亮 -->
+      <!-- Banner -->
       <div v-if="!current.hasJson" class="banner banner-info">
         <span>ℹ️</span>
         <span>此音频暂无高亮 — 时间戳尚未处理完成，仍可正常播放。</span>
@@ -63,22 +63,29 @@
         </div>
       </div>
 
-      <!-- Word text -->
+      <!-- Text: original Pali text with sub-word synced highlights -->
       <div class="text-area" ref="textAreaEl">
-        <div v-if="current.hasJson && segments.length">
-          <div v-for="(seg, si) in segments" :key="si" class="segment">
-            <span v-for="(w, wi) in seg.words"
-                  :key="wi"
-                  class="word"
-                  :class="{ dim: wordStatus(seg, wi) === 'dim', active: wordStatus(seg, wi) === 'active', clickable: current.hasJson }"
-                  :ref="el => { if (el && wordStatus(seg, wi) === 'active') activeWordEl = el }"
-                  @click="current.hasJson && seekTo(w.start)">
-              {{ w.word }}<span v-if="wi < seg.words.length - 1"> </span>
-            </span>
+        <template v-if="paragraphs.length">
+          <div v-for="(p, pi) in paragraphs" :key="pi" class="paragraph">
+            <div v-for="(line, li) in p.lines" :key="li" class="line">
+              <span v-for="(t, ti) in line.tokens" :key="ti" style="display: inline;">
+                <template v-for="(part, pi2) in t.parts">
+                  <span v-if="part.start !== undefined"
+                        class="word"
+                        :class="[current.hasJson ? partClass(part) : '', current.hasJson ? 'clickable' : '']"
+                        :ref="el => { if (el && current.hasJson && part.start <= currentTime.value && currentTime.value < part.end) activeWordEl = el }"
+                        @click="current.hasJson && seekTo(part.start)">
+                    {{ part.text }}
+                  </span>
+                  <span v-else class="part-sep">{{ part.text }}</span>
+                </template>
+                <span v-if="ti < line.tokens.length - 1"> </span>
+              </span>
+            </div>
           </div>
-        </div>
-        <div v-else style="color: var(--ink-light); font-size: 1rem; line-height: 1.8; white-space: pre-wrap;">
-          {{ paliText }}
+        </template>
+        <div v-else style="color: var(--muted); font-size: 0.95rem; text-align: center; margin-top: 40px;">
+          暂无经文文本
         </div>
       </div>
     </template>
@@ -89,7 +96,11 @@
 <script>
 const { createApp, ref, computed, onMounted, onUnmounted, nextTick } = Vue;
 
-// ─── Track definitions (exact filenames from filesystem) ───
+// ─── Pali lexicon regex (mirrors generate_csv.py) ───
+const PALI_RE = /[a-zA-ZāĀīĪūŪṃṀṁṅṄñÑṭṬḍḌṇṆḷḶ'’]+/g;
+function cleanWord(w) { return (w.match(PALI_RE) || []).join(''); }
+
+// ─── Track definitions ───
 const tracks = [
   { id: '01', name: 'Homage Tisarana · 礼敬佛陀 三皈依',
     audio: '01.Homage Tisarana 礼敬佛陀 三皈依.mp3',
@@ -114,6 +125,78 @@ const tracks = [
     json: null, hasJson: false },
 ];
 
+// ─── Parse original Pali text into paragraph/line/token structure ───
+function parsePaliText(text) {
+  const paragraphs = [];
+  const rawParas = text.split(/\n\n+/);
+  for (const rawP of rawParas) {
+    const lines = [];
+    const rawLines = rawP.trim().split('\n');
+    for (const rawL of rawLines) {
+      let l = rawL.trim();
+      if (!l || l.startsWith('//')) continue;
+      l = l.replace(/^\d+\.[\s\t]*/, '').replace(/^\d+[\s\t]/, '').replace(/\/\/.*$/, '').trim();
+      if (!l) continue;
+      const tokens = l.split(/\s+/).map(d => ({ display: d, parts: [] }));
+      lines.push({ tokens });
+    }
+    if (lines.length) paragraphs.push({ lines });
+  }
+  return paragraphs;
+}
+
+// ─── Align tokens with JSON words by position ───
+// Builds token.parts: an array of {text, start?, end?}.
+// Hyphenated compounds get multiple timed parts with "-" separators between them.
+function alignWithJson(paragraphs, jsonWords) {
+  let ji = 0;
+  for (const p of paragraphs) {
+    for (const line of p.lines) {
+      for (const token of line.tokens) {
+        const rawParts = token.display.split('-');
+        const parts = [];
+        for (let i = 0; i < rawParts.length; i++) {
+          const segment = rawParts[i];
+          if (i > 0) parts.push({ text: '-' });
+          const cleaned = cleanWord(segment);
+          if (cleaned) {
+            const jw = jsonWords[ji];
+            if (jw) {
+              parts.push({
+                text: segment,
+                start: parseFloat(jw.start_time),
+                end: parseFloat(jw.end_time),
+              });
+              ji++;
+            } else {
+              parts.push({ text: segment });
+            }
+          } else {
+            parts.push({ text: segment });
+          }
+        }
+        token.parts = parts;
+      }
+    }
+  }
+}
+
+// ─── Flat list of all timed parts for efficient scanning ───
+function flattenParts(paragraphs) {
+  const all = [];
+  for (const p of paragraphs) {
+    for (const line of p.lines) {
+      for (const token of line.tokens) {
+        for (const part of token.parts) {
+          if (part.start !== undefined) all.push(part);
+        }
+      }
+    }
+  }
+  return all;
+}
+
+// ─── App ───
 createApp({
   setup() {
     const current = ref(null);
@@ -121,8 +204,8 @@ createApp({
     const audioReady = ref(false);
     const currentTime = ref(0);
     const duration = ref(0);
-    const segments = ref([]);
-    const paliText = ref('');
+    const paragraphs = ref([]);
+    const flatParts = ref([]);
     const progressBar = ref(null);
     const textAreaEl = ref(null);
     const activeWordEl = ref(null);
@@ -135,11 +218,10 @@ createApp({
       return (currentTime.value / duration.value) * 100;
     });
 
-    function wordStatus(seg, wi) {
-      if (!current.value?.hasJson || !seg.words[wi]) return '';
-      const w = seg.words[wi];
-      if (w.end <= currentTime.value) return 'dim';
-      if (w.start <= currentTime.value && currentTime.value < w.end) return 'active';
+    function partClass(part) {
+      if (part.start === undefined) return '';
+      if (part.end <= currentTime.value) return 'dim';
+      if (part.start <= currentTime.value && part.end > currentTime.value) return 'active';
       return '';
     }
 
@@ -180,9 +262,7 @@ createApp({
     function startSync() {
       stopSync();
       function tick() {
-        if (audio && !audio.paused) {
-          currentTime.value = audio.currentTime;
-        }
+        if (audio && !audio.paused) currentTime.value = audio.currentTime;
         rafId = requestAnimationFrame(tick);
       }
       rafId = requestAnimationFrame(tick);
@@ -195,52 +275,41 @@ createApp({
     async function selectTrack(track) {
       if (current.value && current.value.id === track.id) return;
       current.value = track;
-      segments.value = [];
-      paliText.value = '';
+      paragraphs.value = [];
+      flatParts.value = [];
 
+      // 1. Fetch original Pali text
+      let rawText = '';
+      try {
+        const txtName = track.audio.replace('.mp3', '.txt');
+        const resp = await fetch('./assets/pali/' + txtName);
+        if (resp.ok) rawText = await resp.text();
+      } catch (e) {}
+
+      // 2. Parse into paragraphs/lines/tokens
+      const parsed = parsePaliText(rawText || '');
+
+      // 3. If JSON exists, fetch and align
       if (track.hasJson) {
         try {
           const resp = await fetch('./assets/json/' + track.json);
-          if (!resp.ok) throw new Error('JSON not found — ' + resp.status);
-          const data = await resp.json();
-          // Data is a flat list: [{word_id, segment_id, pali_roman, start_time, end_time}, ...]
-          // Group by segment_id, map field names
-          const grouped = {};
-          for (const w of data) {
-            const sid = w.segment_id || '1';
-            if (!grouped[sid]) grouped[sid] = [];
-            grouped[sid].push({
-              word: w.pali_roman,
-              start: parseFloat(w.start_time),
-              end: parseFloat(w.end_time)
-            });
+          if (resp.ok) {
+            const data = await resp.json();
+            alignWithJson(parsed, data);
           }
-          // Sort segments by numeric segment_id
-          const sorted = Object.entries(grouped)
-            .sort((a, b) => parseInt(a[0]) - parseInt(b[0]));
-          segments.value = sorted.map(([_, words]) => ({ words }));
-        } catch (e) {
-          console.warn('Failed to load JSON:', e);
-          segments.value = [];
-        }
-      } else {
-        try {
-          const txtName = track.audio.replace('.mp3', '.txt');
-          const resp = await fetch('./assets/pali/' + txtName);
-          if (resp.ok) paliText.value = await resp.text();
-        } catch (e) { /* ignore */ }
+        } catch (e) { console.warn('JSON load failed:', e); }
       }
+
+      paragraphs.value = parsed;
+      flatParts.value = flattenParts(parsed);
 
       initAudio('./assets/audio/' + track.audio);
     }
 
     function togglePlay() {
       if (!audio || !audioReady.value) return;
-      if (audio.paused) {
-        audio.play().catch(() => {});
-      } else {
-        audio.pause();
-      }
+      if (audio.paused) audio.play().catch(() => {});
+      else audio.pause();
     }
 
     function seek(e) {
@@ -251,20 +320,19 @@ createApp({
     }
 
     function seekTo(time) {
-      if (!audio) return;
+      if (!time || !audio) return;
       audio.currentTime = time;
       if (audio.paused) audio.play().catch(() => {});
     }
 
-    // Scroll active word into view
+    // ─── Scroll active part into view ───
     let lastActiveEl = null;
     function scrollActive() {
       nextTick(() => {
         const el = activeWordEl.value;
         if (el && el !== lastActiveEl && textAreaEl.value) {
           lastActiveEl = el;
-          const container = textAreaEl.value;
-          const cr = container.getBoundingClientRect();
+          const cr = textAreaEl.value.getBoundingClientRect();
           const er = el.getBoundingClientRect();
           if (er.top < cr.top + 80 || er.bottom > cr.bottom - 40) {
             el.scrollIntoView({ block: 'center', behavior: 'smooth' });
@@ -273,30 +341,24 @@ createApp({
       });
     }
 
-    // Poll for active word changes to scroll
+    // ─── Poll active-part changes ───
     onMounted(() => {
       let lastIdx = -1;
       setInterval(() => {
-        if (!current.value?.hasJson || !segments.value.length) return;
+        if (!current.value?.hasJson || !flatParts.value.length) return;
+        const fp = flatParts.value;
         let idx = 0;
-        outer: for (const seg of segments.value) {
-          for (const w of seg.words) {
-            if (w.start <= currentTime.value && currentTime.value < w.end) {
-              break outer;
-            }
-            idx++;
-          }
+        for (const p of fp) {
+          if (p.start <= currentTime.value && p.end > currentTime.value) break;
+          idx++;
         }
-        if (idx !== lastIdx) { lastIdx = idx; scrollActive(); }
+        if (idx < fp.length && idx !== lastIdx) { lastIdx = idx; scrollActive(); }
       }, 250);
     });
 
-    // Keyboard shortcut
+    // ─── Keyboard ───
     function onKey(e) {
-      if (e.code === 'Space' && current.value) {
-        e.preventDefault();
-        togglePlay();
-      }
+      if (e.code === 'Space' && current.value) { e.preventDefault(); togglePlay(); }
     }
     document.addEventListener('keydown', onKey);
     onUnmounted(() => {
@@ -307,10 +369,10 @@ createApp({
 
     return {
       tracks, current, playing, audioReady,
-      currentTime, duration, segments, paliText,
+      currentTime, duration, paragraphs, flatParts,
       progressPct, progressBar, textAreaEl, activeWordEl,
       selectTrack, togglePlay, seek, seekTo,
-      wordStatus, fmtTime,
+      partClass, fmtTime,
     };
   }
 }).mount('#app');
