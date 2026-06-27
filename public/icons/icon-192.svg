@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">
+  <defs>
+    <style>
+      .light { font-family: 'Noto Sans','Helvetica Neue',Arial,sans-serif; font-weight: 200; }
+      .bold { font-family: 'Noto Sans','Helvetica Neue',Arial,sans-serif; font-weight: 700; }
+      .chanting { font-family: 'Noto Sans','Helvetica Neue',Arial,sans-serif; font-weight: 200; }
+    </style>
+  </defs>
+  <text x="15" y="108" class="bold" font-size="88" fill="#2c2416">p</text>
+  <text x="70" y="108" class="bold" font-size="88" fill="#c0392b">ā</text>
+  <text x="120" y="108" class="bold" font-size="88" fill="#2c2416">l</text>
+  <text x="157" y="108" class="bold" font-size="88" fill="#2c2416">i</text>
+  <text x="96" y="148" class="chanting" font-size="22" fill="#b8860b" text-anchor="middle" letter-spacing="3">chanting</text>
+</svg>

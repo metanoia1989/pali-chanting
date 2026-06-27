@@ -131,7 +131,7 @@ createApp({
     const flatParts = ref([]);
     const progressBar = ref(null);
     const textAreaEl = ref(null);
-    const activeWordEl = ref(null);
+    const sidebarOpen = ref(false);
 
     let audio = null;
     let rafId = null;
@@ -195,8 +195,20 @@ createApp({
       if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
     }
 
+    function toggleSidebar() {
+      sidebarOpen.value = !sidebarOpen.value;
+    }
+
+    function randomTrack() {
+      const available = tracks.filter(t => t.hasJson);
+      if (!available.length) return;
+      const pick = available[Math.floor(Math.random() * available.length)];
+      selectTrack(pick);
+    }
+
     async function selectTrack(track) {
       if (current.value && current.value.id === track.id) return;
+      sidebarOpen.value = false;
       current.value = track;
       paragraphs.value = [];
       flatParts.value = [];
@@ -249,34 +261,39 @@ createApp({
     }
 
     // ─── Scroll active part into view ───
-    let lastActiveEl = null;
+    let lastScrollIdx = -1;
     function scrollActive() {
+      const idx = flatParts.value.findIndex(p => p.start <= currentTime.value && p.end > currentTime.value);
+      if (idx < 0 || idx === lastScrollIdx) return;
+      lastScrollIdx = idx;
+
       nextTick(() => {
-        const el = activeWordEl.value;
-        if (el && el !== lastActiveEl && textAreaEl.value) {
-          lastActiveEl = el;
-          const cr = textAreaEl.value.getBoundingClientRect();
-          const er = el.getBoundingClientRect();
-          if (er.top < cr.top + 80 || er.bottom > cr.bottom - 40) {
-            el.scrollIntoView({ block: 'center', behavior: 'smooth' });
-          }
+        const container = textAreaEl.value;
+        if (!container) return;
+        const p = flatParts.value[idx];
+        if (!p) return;
+        const el = container.querySelector(`[data-start="${p.start}"]`);
+        if (!el) return;
+
+        const cr = container.getBoundingClientRect();
+        const er = el.getBoundingClientRect();
+        const offset = er.top - cr.top - cr.height / 2 + er.height / 2;
+
+        if (Math.abs(offset) > er.height * 0.5) {
+          container.scrollTo({
+            top: container.scrollTop + offset,
+            behavior: 'smooth',
+          });
         }
       });
     }
 
-    // ─── Poll active-part changes ───
+    // ─── Poll for auto-scroll on word change ───
     onMounted(() => {
-      let lastIdx = -1;
       setInterval(() => {
         if (!current.value?.hasJson || !flatParts.value.length) return;
-        const fp = flatParts.value;
-        let idx = 0;
-        for (const p of fp) {
-          if (p.start <= currentTime.value && p.end > currentTime.value) break;
-          idx++;
-        }
-        if (idx < fp.length && idx !== lastIdx) { lastIdx = idx; scrollActive(); }
-      }, 250);
+        scrollActive();
+      }, 200);
     });
 
     // ─── Keyboard ───
@@ -293,8 +310,8 @@ createApp({
     return {
       tracks, current, playing, audioReady,
       currentTime, duration, paragraphs, flatParts,
-      progressPct, progressBar, textAreaEl, activeWordEl,
-      selectTrack, togglePlay, seek, seekTo,
+      progressPct, progressBar, textAreaEl, sidebarOpen,
+      selectTrack, togglePlay, seek, seekTo, toggleSidebar, randomTrack,
       partClass, fmtTime,
     };
   }

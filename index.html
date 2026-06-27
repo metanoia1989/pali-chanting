@@ -3,215 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pāli Chant — 巴利语唱诵精听与发音学习工具</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Pāli Chant · 巴利语唱诵精听</title>
+  <meta name="description" content="巴利语唱诵精听与发音学习工具 — 单词级精准高亮、循环精听、离线可用">
+  <meta name="theme-color" content="#f5f0e8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/icons/icon-192.svg">
   <link rel="stylesheet" href="/src/css/common.css">
+  <link rel="stylesheet" href="/src/css/play.css">
 </head>
 <body>
+<div id="app">
 
-<nav>
-  <div class="inner">
-    <a href="#" class="logo">Pāli <em>Chant</em></a>
-    <div class="links">
-      <a href="#features">功能</a>
-      <a href="#tech">技术栈</a>
-      <a href="#users">适用人群</a>
+  <!-- Sidebar -->
+  <aside class="sidebar" :class="{ open: sidebarOpen }">
+    <div class="sidebar-header">
+      Pāli <em>Chant</em>
+      <small>巴利语唱诵精听</small>
     </div>
-  </div>
-</nav>
+    <div class="track-list">
+      <div v-for="t in tracks"
+           :key="t.id"
+           class="track-item"
+           :class="{ active: current?.id === t.id }"
+           @click="selectTrack(t)">
+        <span class="num">{{ t.id }}</span>
+        <span class="track-name">{{ t.name }}</span>
+        <span class="track-status" :class="t.hasJson ? 'ok' : 'na'">
+          {{ t.hasJson ? '高亮' : '暂无' }}
+        </span>
+      </div>
+    </div>
+  </aside>
 
-<!-- ─── Hero ─── -->
-<header class="hero">
-  <span class="hero-badge">巴利语学习工具 · MVP</span>
-  <h1>音文同步，逐词<em>精听</em></h1>
-  <p>一款专为巴利语学习者设计的轻量级唱诵辅助工具 —— 单词级精准高亮、循环精听、离线可用，让古老的唱诵在指尖逐词流淌。</p>
-  <div class="actions">
-    <a href="#features" class="btn btn-primary">了解功能</a>
-    <a href="#tech" class="btn btn-outline">技术栈</a>
-  </div>
-  <div class="scroll-hint">
-    <svg width="20" height="28" viewBox="0 0 20 28" fill="none" stroke="#8a7e6e" stroke-width="1.5">
-      <rect x="2" y="2" width="16" height="24" rx="8"/>
-      <circle cx="10" cy="9" r="2" fill="#8a7e6e"/>
-    </svg>
-  </div>
-</header>
+  <!-- Sidebar overlay (mobile only) -->
+  <div class="sidebar-overlay" :class="{ open: sidebarOpen }" @click="sidebarOpen = false"></div>
 
-<!-- ─── Features ─── -->
-<section id="features">
-  <div class="inner">
-    <div class="reveal">
-      <h2>逐词同步，所见即所听</h2>
-      <p class="subtitle">巴利语长句连诵时，再也不怕找不到读到哪。</p>
+  <!-- Main -->
+  <main class="main">
+    <div class="mobile-header">
+      <button class="menu-btn" @click="toggleSidebar" aria-label="打开菜单">☰</button>
+      <span class="mobile-title">Pāli Chant</span>
     </div>
 
-    <!-- Interactive Demo -->
-    <div class="visual-demo reveal" id="demo">
-      <p class="line" id="demo-line">
-        <span class="word dim">Namo</span>
-        <span class="word dim">tassa</span>
-        <span class="word dim">bhagavato</span>
-        <span class="word dim">arahato</span>
-        <span class="word active">sammā</span>
-        <span class="word">sambuddhassa</span>
-      </p>
-      <div class="demo-controls">
-        <button class="demo-btn" id="demo-play-btn" title="播放 / 暂停">▶</button>
-        <div class="demo-label" id="demo-word-label">sammā</div>
-        <div class="demo-progress">
-          <div class="demo-progress-bar" id="demo-progress-bar"></div>
+    <div v-if="!current" class="empty-state">
+      <div class="icon">🎧</div>
+      <p>选择一个唱诵开始精听</p>
+      <button class="btn-random" @click="randomTrack">🎲 随机播放</button>
+    </div>
+
+    <template v-else>
+      <div class="track-title">{{ current.name }}</div>
+      <div class="track-meta">{{ current.id }} · {{ current.hasJson ? '单词级高亮' : '暂无时间戳标注' }}</div>
+
+      <!-- Banner -->
+      <div v-if="!current.hasJson" class="banner banner-info">
+        <span>ℹ️</span>
+        <span>此音频暂无高亮 — 时间戳尚未处理完成，仍可正常播放。</span>
+      </div>
+
+      <!-- Player -->
+      <div class="player">
+        <button class="btn-play" @click="togglePlay" :disabled="!audioReady">
+          {{ playing ? '⏸' : '▶' }}
+        </button>
+        <div class="progress-wrap">
+          <div class="progress-bar" ref="progressBar" @click="seek">
+            <div class="progress-fill" :style="{ width: progressPct + '%' }"></div>
+          </div>
+          <span class="time">{{ fmtTime(currentTime) }} / {{ fmtTime(duration) }}</span>
         </div>
       </div>
-      <div class="status-badges">
-        <span class="status-badge"><span class="status-dot playing"></span> 播放中</span>
-        <span class="status-badge"><span class="status-dot played"></span> 已播放</span>
-        <span class="status-badge"><span class="status-dot pending"></span> 未播放</span>
-      </div>
-    </div>
 
-    <div class="features-grid">
-      <div class="feature-card reveal">
-        <span class="icon">🎯</span>
-        <h3>单词级高亮</h3>
-        <p>基于 JSON 时间戳，音频播放时逐词精准同步，彻底解决"找不到读到哪"的痛点。</p>
+      <!-- Text: original Pali text with sub-word synced highlights -->
+      <div class="text-area" ref="textAreaEl">
+        <template v-if="paragraphs.length">
+          <div v-for="(p, pi) in paragraphs" :key="pi" class="paragraph">
+            <div v-for="(line, li) in p.lines" :key="li" class="line">
+              <span v-for="(t, ti) in line.tokens" :key="ti" style="display: inline;">
+                <template v-for="(part, pi2) in t.parts">
+                  <span v-if="part.start !== undefined"
+                        class="word"
+                        :data-start="part.start"
+                        :class="[current.hasJson ? partClass(part) : '', current.hasJson ? 'clickable' : '']"
+                        @click="current.hasJson && seekTo(part.start)">
+                    {{ part.text }}
+                  </span>
+                  <span v-else class="part-sep">{{ part.text }}</span>
+                </template>
+                <span v-if="ti < line.tokens.length - 1"> </span>
+              </span>
+            </div>
+          </div>
+        </template>
+        <div v-else style="color: var(--muted); font-size: 0.95rem; text-align: center; margin-top: 40px;">
+          暂无经文文本
+        </div>
       </div>
-      <div class="feature-card reveal">
-        <span class="icon">🎧</span>
-        <h3>四维交互精听</h3>
-        <p>单击跳转、双击循环、R 键重播、空格暂停 —— 适应不同学习场景的无缝切换。</p>
-      </div>
-      <div class="feature-card reveal">
-        <span class="icon">📜</span>
-        <h3>唱诵段落结构化</h3>
-        <p>按偈颂（Gāthā）分段展示，保留韵律换行，而非简单堆砌为纯文本块。</p>
-      </div>
-      <div class="feature-card reveal">
-        <span class="icon">📱</span>
-        <h3>Electron + PWA 双端</h3>
-        <p>桌面端与移动端共享同一套代码，交互逻辑与同步精度完全一致。</p>
-      </div>
-      <div class="feature-card reveal">
-        <span class="icon">🪶</span>
-        <h3>极致轻量离线</h3>
-        <p>安装包 &lt; 80MB，首次加载后完全离线可用。无广告、无追踪、无账号。</p>
-      </div>
-      <div class="feature-card reveal">
-        <span class="icon">🔤</span>
-        <h3>巴利语专属字体</h3>
-        <p>内置字体回退链，确保 ṃ ṇ ṭ ḍ ū ī 等转写字母在所有设备上正确渲染。</p>
-      </div>
-    </div>
-  </div>
-</section>
+    </template>
+  </main>
 
-<!-- ─── Tech Stack ─── -->
-<section id="tech">
-  <div class="inner">
-    <div class="reveal">
-      <h2>技术栈</h2>
-      <p class="subtitle">纯静态架构，零服务端依赖，极致轻量与隐私安全。</p>
-    </div>
-    <div class="tech-grid">
-      <div class="tech-item reveal">
-        <span class="label">桌面端</span>
-        <span class="arrow">→</span>
-        <span class="value">Electron + Vite</span>
-      </div>
-      <div class="tech-item reveal">
-        <span class="label">前端</span>
-        <span class="arrow">→</span>
-        <span class="value">Vue3</span>
-      </div>
-      <div class="tech-item reveal">
-        <span class="label">音频引擎</span>
-        <span class="arrow">→</span>
-        <span class="value">Web Audio API</span>
-      </div>
-      <div class="tech-item reveal">
-        <span class="label">数据格式</span>
-        <span class="arrow">→</span>
-        <span class="value">{ word, start_time, end_time } JSON</span>
-      </div>
-      <div class="tech-item reveal">
-        <span class="label">移动端</span>
-        <span class="arrow">→</span>
-        <span class="value">PWA (Service Worker)</span>
-      </div>
-      <div class="tech-item reveal">
-        <span class="label">托管</span>
-        <span class="arrow">→</span>
-        <span class="value">Cloudflare Pages</span>
-      </div>
-    </div>
-  </div>
-</section>
+</div>
 
-<!-- ─── Users ─── -->
-<section id="users">
-  <div class="inner">
-    <div class="reveal">
-      <h2>适用人群</h2>
-      <p class="subtitle">无论你是初学者还是研究者，都能从中受益。</p>
-    </div>
-    <div class="users-grid">
-      <div class="user-card reveal">
-        <h3>📖 巴利语初学者</h3>
-        <p>需要反复听辨字母发音、掌握基础拼读规则的入门者。</p>
-      </div>
-      <div class="user-card reveal">
-        <h3>🧘 南传佛教修行者</h3>
-        <p>日常课诵、禅修前唱诵，需要精准的文本对照与节奏跟随。</p>
-      </div>
-      <div class="user-card reveal">
-        <h3>🎓 佛学院学生 / 研究者</h3>
-        <p>精研《法句经》《护卫经》等经典的语音细节，需要单词级回溯能力。</p>
-      </div>
-      <div class="user-card reveal">
-        <h3>🗣️ 语言爱好者</h3>
-        <p>对印欧语系古老语言的音韵学感兴趣，感受巴利语的韵律美。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── Philosophy ─── -->
-<section id="philosophy">
-  <div class="inner">
-    <div class="reveal">
-      <h2>设计哲学</h2>
-      <p class="subtitle">克制、专注、尊重内容。</p>
-    </div>
-    <div class="philosophy-grid">
-      <div class="philo-item reveal">
-        <div class="big">🔌</div>
-        <h3>纯离线可用</h3>
-        <p>适合禅修中心、寺院等无网络环境</p>
-      </div>
-      <div class="philo-item reveal">
-        <div class="big">💰</div>
-        <h3>零运维成本</h3>
-        <p>无服务器、无数据库、无 SSL 费用</p>
-      </div>
-      <div class="philo-item reveal">
-        <div class="big">🔒</div>
-        <h3>隐私安全</h3>
-        <p>无网络请求，无数据收集，无账号体系</p>
-      </div>
-      <div class="philo-item reveal">
-        <div class="big">📱</div>
-        <h3>跨端一致</h3>
-        <p>桌面端与移动端体验完全一致</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <p>Pāli Chant · 巴利语唱诵精听与发音学习工具</p>
-  <p style="margin-top: 4px;">以 MIT 协议开源 · 构建于 <a href="#">GitHub</a></p>
-</footer>
-
-<script type="module" src="/src/js/index.js"></script>
+<script type="module" src="/src/js/play.js"></script>
 </body>
 </html>
