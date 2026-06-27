@@ -77,24 +77,39 @@
         </div>
       </div>
 
-      <!-- Text: original Pali text with sub-word synced highlights -->
+      <!-- Translation toggles -->
+      <div v-if="paragraphs.length" class="trans-toggles">
+        <span class="trans-label">翻译</span>
+        <button class="trans-btn" :class="{ on: showEn }" @click="toggleTrans('en')">EN</button>
+        <button class="trans-btn" :class="{ on: showCn }" @click="toggleTrans('cn')">中文</button>
+      </div>
+
+      <!-- Text: original Pali text with translations -->
       <div class="text-area" ref="textAreaEl">
         <template v-if="paragraphs.length">
           <div v-for="(p, pi) in paragraphs" :key="pi" class="paragraph">
-            <div v-for="(line, li) in p.lines" :key="li" class="line">
-              <span v-for="(t, ti) in line.tokens" :key="ti" style="display: inline;">
-                <template v-for="(part, pi2) in t.parts">
-                  <span v-if="part.start !== undefined"
-                        class="word"
-                        :data-start="part.start"
-                        :class="[current.hasJson ? partClass(part) : '', current.hasJson ? 'clickable' : '']"
-                        @click="current.hasJson && seekTo(part.start)">
-                    {{ part.text }}
-                  </span>
-                  <span v-else class="part-sep">{{ part.text }}</span>
-                </template>
-                <span v-if="ti < line.tokens.length - 1"> </span>
-              </span>
+            <div v-for="(line, li) in p.lines" :key="li" class="line-group">
+              <div class="line">
+                <span v-for="(t, ti) in line.tokens" :key="ti" style="display: inline;">
+                  <template v-for="(part, pi2) in t.parts">
+                    <span v-if="part.start !== undefined"
+                          class="word"
+                          :data-start="part.start"
+                          :class="[current.hasJson ? partClass(part) : '', current.hasJson ? 'clickable' : '']"
+                          @click="current.hasJson && seekTo(part.start)">
+                      {{ part.text }}
+                    </span>
+                    <span v-else class="part-sep">{{ part.text }}</span>
+                  </template>
+                  <span v-if="ti < line.tokens.length - 1"> </span>
+                </span>
+              </div>
+              <div v-if="showEn && line.trans?.en" class="trans-line" :class="{ dim: isLineFinished(line, currentTime) }">
+                {{ line.trans.en }}
+              </div>
+              <div v-if="showCn && line.trans?.cn" class="trans-line" :class="{ dim: isLineFinished(line, currentTime) }">
+                {{ line.trans.cn }}
+              </div>
             </div>
           </div>
         </template>

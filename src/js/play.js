@@ -119,6 +119,35 @@ function flattenParts(paragraphs) {
   return all;
 }
 
+// ─── Parse translation text ───
+function parseTransText(text) {
+  const paragraphs = [];
+  const rawParas = text.trim().split(/\n\n+/);
+  for (const rawP of rawParas) {
+    const lines = [];
+    const rawLines = rawP.trim().split('\n');
+    for (const rawL of rawLines) {
+      const l = rawL.trim();
+      if (!l || l.startsWith('//')) continue;
+      if (/^\d+\.?\s*$/.test(l)) continue;
+      lines.push(l);
+    }
+    if (lines.length) paragraphs.push({ lines });
+  }
+  return paragraphs;
+}
+
+// ─── Check if a full Pali line is finished playing ───
+function isLineFinished(line, t) {
+  let maxEnd = 0;
+  for (const token of line.tokens) {
+    for (const part of token.parts) {
+      if (part.end !== undefined && part.end > maxEnd) maxEnd = part.end;
+    }
+  }
+  return maxEnd > 0 && t >= maxEnd;
+}
+
 // ─── App ───
 createApp({
   setup() {
@@ -132,6 +161,8 @@ createApp({
     const progressBar = ref(null);
     const textAreaEl = ref(null);
     const sidebarOpen = ref(false);
+    const showEn = ref(true);
+    const showCn = ref(true);
 
     let audio = null;
     let rafId = null;
@@ -199,6 +230,11 @@ createApp({
       sidebarOpen.value = !sidebarOpen.value;
     }
 
+    function toggleTrans(lang) {
+      if (lang === 'en') showEn.value = !showEn.value;
+      if (lang === 'cn') showCn.value = !showCn.value;
+    }
+
     function randomTrack() {
       const available = tracks.filter(t => t.hasJson);
       if (!available.length) return;
@@ -233,6 +269,31 @@ createApp({
             alignWithJson(parsed, data);
           }
         } catch (e) { console.warn('JSON load failed:', e); }
+      }
+
+      // 4. Fetch and attach translations
+      const txtName = track.audio.replace('.mp3', '.txt');
+      let transEn = null, transCn = null;
+      try {
+        const [rEn, rCn] = await Promise.all([
+          fetch('./assets/trans/en/' + txtName),
+          fetch('./assets/trans/cn/' + txtName),
+        ]);
+        if (rEn.ok) transEn = parseTransText(await rEn.text());
+        if (rCn.ok) transCn = parseTransText(await rCn.text());
+      } catch (e) {}
+      // Attach translations line-by-line matching paragraph structure
+      if (transEn || transCn) {
+        for (let pi = 0; pi < parsed.length; pi++) {
+          const lEn = transEn?.[pi]?.lines;
+          const lCn = transCn?.[pi]?.lines;
+          for (let li = 0; li < parsed[pi].lines.length; li++) {
+            const line = parsed[pi].lines[li];
+            if (lEn?.[li]) line.trans = line.trans || {};
+            if (lEn?.[li]) line.trans.en = lEn[li];
+            if (lCn?.[li]) line.trans.cn = lCn[li];
+          }
+        }
       }
 
       paragraphs.value = parsed;
@@ -311,8 +372,9 @@ createApp({
       tracks, current, playing, audioReady,
       currentTime, duration, paragraphs, flatParts,
       progressPct, progressBar, textAreaEl, sidebarOpen,
-      selectTrack, togglePlay, seek, seekTo, toggleSidebar, randomTrack,
-      partClass, fmtTime,
+      showEn, showCn,
+      selectTrack, togglePlay, seek, seekTo, toggleSidebar, randomTrack, toggleTrans,
+      partClass, fmtTime, isLineFinished,
     };
   }
 }).mount('#app');
