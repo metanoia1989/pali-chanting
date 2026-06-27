@@ -6,6 +6,7 @@ import htmlMinifier from 'vite-plugin-html-minifier'
 export default defineConfig({
   root: '.',
   publicDir: 'public',
+  appType: 'mpa',
   resolve: {
     alias: {
       vue: 'vue/dist/vue.esm-bundler.js',
@@ -18,6 +19,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         landing: resolve(__dirname, 'landing.html'),
+        404: resolve(__dirname, '404.html'),
       },
     },
   },
@@ -34,6 +36,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       workbox: {
         globPatterns: ['**/*.{js,css,html,json,txt,woff2,svg}'],
+        navigateFallback: null,
         runtimeCaching: [
           {
             urlPattern: /\/assets\/audio\/.+\.mp3$/,
