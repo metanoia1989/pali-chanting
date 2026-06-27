@@ -1,7 +1,48 @@
 import { defineConfig } from 'vite'
-import { resolve } from 'path'
+import { resolve, dirname } from 'path'
+import { fileURLToPath } from 'url'
+import fs from 'fs'
 import { VitePWA } from 'vite-plugin-pwa'
 import htmlMinifier from 'vite-plugin-html-minifier'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
+// ─── Collect all track data into the JS bundle ───
+const TRACKS = [
+  { id: '01', audio: '01.Homage Tisarana 礼敬佛陀 三皈依.mp3', json: '01.Homage Tisarana 礼敬佛陀 三皈依.json' },
+  { id: '02', audio: '02.Main Puja 佛随念 礼敬七佛.mp3', json: '02.Main Puja 佛随念 礼敬七佛.json' },
+  { id: '03', audio: '03.inviting the Devas 邀请诸天.mp3', json: '03.inviting the Devas 邀请诸天.json' },
+  { id: '04', audio: '04.Maha Maṅgala Suttaṁ 大吉祥经.mp3', json: '04.Maha Maṅgala Suttaṁ 大吉祥经.json' },
+  { id: '05', audio: '05.Karaniya metta Sutta 应行慈爱经.mp3', json: '05.Karaniya metta Sutta 应行慈爱经.json' },
+  { id: '06', audio: '06.Kammā Vācanā  请求宽恕.mp3', json: '06.Kammā Vācanā  请求宽恕.json' },
+]
+
+function paliDataPlugin() {
+  const D = p => resolve(__dirname, 'data', p)
+  let combined = {}
+  return {
+    name: 'pali-data',
+    buildStart() {
+      combined = {}
+      for (const t of TRACKS) {
+        const txt = t.audio.replace('.mp3', '.txt')
+        const read = f => { try { return fs.readFileSync(D(f), 'utf-8') } catch { return '' } }
+        combined[t.id] = {
+          pali: read('pali/' + txt),
+          json: JSON.parse(read('json/' + t.json) || '[]'),
+          en: read('trans/en/' + txt),
+          cn: read('trans/cn/' + txt),
+        }
+      }
+    },
+    resolveId(id) {
+      if (id === 'virtual:pali-data') return '\0virtual:pali-data'
+    },
+    load(id) {
+      if (id === '\0virtual:pali-data') return `export default ${JSON.stringify(combined)}`
+    },
+  }
+}
 
 export default defineConfig({
   root: '.',
@@ -24,6 +65,7 @@ export default defineConfig({
     },
   },
   plugins: [
+    paliDataPlugin(),
     htmlMinifier({
       minifierOptions: {
         collapseWhitespace: true,
@@ -35,7 +77,7 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       workbox: {
-        globPatterns: ['**/*.{js,css,html,json,txt,woff2,svg}'],
+        globPatterns: ['**/*.{js,css,html,woff2,svg}'],
         navigateFallback: null,
         runtimeCaching: [
           {

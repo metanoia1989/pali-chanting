@@ -1,4 +1,5 @@
 import { createApp, ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
+import allData from 'virtual:pali-data'
 
 // ─── Pali lexicon regex (mirrors generate_csv.py) ───
 const PALI_RE = /[a-zA-ZāĀīĪūŪṃṀṁṅṄñÑṭṬḍḌṇṆḷḶ'’]+/g;
@@ -249,49 +250,25 @@ createApp({
       paragraphs.value = [];
       flatParts.value = [];
 
-      // 1. Fetch original Pali text
-      let rawText = '';
-      try {
-        const txtName = track.audio.replace('.mp3', '.txt');
-        const resp = await fetch('./assets/pali/' + txtName);
-        if (resp.ok) rawText = await resp.text();
-      } catch (e) {}
+      // Load data from bundled module (zero network requests)
+      const d = allData[track.id] || {};
+      const parsed = parsePaliText(d.pali || '');
 
-      // 2. Parse into paragraphs/lines/tokens
-      const parsed = parsePaliText(rawText || '');
-
-      // 3. If JSON exists, fetch and align
-      if (track.hasJson) {
-        try {
-          const resp = await fetch('./assets/json/' + track.json);
-          if (resp.ok) {
-            const data = await resp.json();
-            alignWithJson(parsed, data);
-          }
-        } catch (e) { console.warn('JSON load failed:', e); }
+      if (track.hasJson && d.json) {
+        alignWithJson(parsed, d.json);
       }
 
-      // 4. Fetch and attach translations
-      const txtName = track.audio.replace('.mp3', '.txt');
-      let transEn = null, transCn = null;
-      try {
-        const [rEn, rCn] = await Promise.all([
-          fetch('./assets/trans/en/' + txtName),
-          fetch('./assets/trans/cn/' + txtName),
-        ]);
-        if (rEn.ok) transEn = parseTransText(await rEn.text());
-        if (rCn.ok) transCn = parseTransText(await rCn.text());
-      } catch (e) {}
-      // Attach translations line-by-line matching paragraph structure
-      if (transEn || transCn) {
+      // Attach translations
+      if (d.en || d.cn) {
+        const te = d.en ? parseTransText(d.en) : null;
+        const tc = d.cn ? parseTransText(d.cn) : null;
         for (let pi = 0; pi < parsed.length; pi++) {
-          const lEn = transEn?.[pi]?.lines;
-          const lCn = transCn?.[pi]?.lines;
+          const lEn = te?.[pi]?.lines;
+          const lCn = tc?.[pi]?.lines;
           for (let li = 0; li < parsed[pi].lines.length; li++) {
             const line = parsed[pi].lines[li];
-            if (lEn?.[li]) line.trans = line.trans || {};
-            if (lEn?.[li]) line.trans.en = lEn[li];
-            if (lCn?.[li]) line.trans.cn = lCn[li];
+            if (lEn?.[li]) { line.trans = line.trans || {}; line.trans.en = lEn[li]; }
+            if (lCn?.[li]) { line.trans = line.trans || {}; line.trans.cn = lCn[li]; }
           }
         }
       }
