@@ -3,1002 +3,1002 @@
     "word_id": "1",
     "segment_id": "1",
     "pali_roman": "Karaṇīyamatthakusalena",
-    "start_time": "0.000000",
-    "end_time": "4.004063"
+    "start_time": "0.219401",
+    "end_time": "3.729812"
   },
   {
     "word_id": "2",
     "segment_id": "1",
     "pali_roman": "Yaṁ",
-    "start_time": "4.168613",
-    "end_time": "4.826815"
+    "start_time": "3.894362",
+    "end_time": "4.552564"
   },
   {
     "word_id": "3",
     "segment_id": "1",
     "pali_roman": "taṁ",
-    "start_time": "4.991366",
-    "end_time": "5.375317"
+    "start_time": "4.717115",
+    "end_time": "5.101066"
   },
   {
     "word_id": "4",
     "segment_id": "1",
     "pali_roman": "santaṁ",
-    "start_time": "5.485017",
-    "end_time": "6.307770"
+    "start_time": "5.210767",
+    "end_time": "6.033519"
   },
   {
     "word_id": "5",
     "segment_id": "1",
     "pali_roman": "padaṁ",
-    "start_time": "6.417470",
-    "end_time": "7.130523"
+    "start_time": "6.143220",
+    "end_time": "6.856272"
   },
   {
     "word_id": "6",
     "segment_id": "1",
     "pali_roman": "abhisamecca",
-    "start_time": "7.240223",
-    "end_time": "9.214829"
+    "start_time": "6.965972",
+    "end_time": "8.940578"
   },
   {
     "word_id": "7",
     "segment_id": "2",
     "pali_roman": "Sakko",
-    "start_time": "9.324530",
-    "end_time": "10.366683"
+    "start_time": "9.050279",
+    "end_time": "10.092432"
   },
   {
     "word_id": "8",
     "segment_id": "2",
     "pali_roman": "ujū",
-    "start_time": "10.531234",
-    "end_time": "11.134585"
+    "start_time": "10.256983",
+    "end_time": "10.860335"
   },
   {
     "word_id": "9",
     "segment_id": "2",
     "pali_roman": "ca",
-    "start_time": "11.189436",
-    "end_time": "11.408836"
+    "start_time": "10.915185",
+    "end_time": "11.134585"
   },
   {
     "word_id": "10",
     "segment_id": "2",
     "pali_roman": "sūjū",
-    "start_time": "11.573387",
-    "end_time": "12.450990"
+    "start_time": "11.299136",
+    "end_time": "12.176739"
   },
   {
     "word_id": "11",
     "segment_id": "2",
     "pali_roman": "ca",
-    "start_time": "12.560690",
-    "end_time": "12.999491"
+    "start_time": "12.286439",
+    "end_time": "12.725241"
   },
   {
     "word_id": "12",
     "segment_id": "2",
     "pali_roman": "Suvaco",
-    "start_time": "13.438293",
-    "end_time": "14.425596"
+    "start_time": "13.164042",
+    "end_time": "14.151345"
   },
   {
     "word_id": "13",
     "segment_id": "2",
     "pali_roman": "cassa",
-    "start_time": "14.480446",
-    "end_time": "15.412899"
+    "start_time": "14.206195",
+    "end_time": "15.138648"
   },
   {
     "word_id": "14",
     "segment_id": "2",
     "pali_roman": "mudu",
-    "start_time": "15.522599",
-    "end_time": "16.235652"
+    "start_time": "15.248349",
+    "end_time": "15.961401"
   },
   {
     "word_id": "15",
     "segment_id": "2",
     "pali_roman": "anatimānī",
-    "start_time": "16.345352",
-    "end_time": "17.826307"
+    "start_time": "16.071101",
+    "end_time": "17.552056"
   },
   {
     "word_id": "16",
     "segment_id": "3",
     "pali_roman": "Santussako",
-    "start_time": "18.100558",
-    "end_time": "20.020314"
+    "start_time": "17.826307",
+    "end_time": "19.746063"
   },
   {
     "word_id": "17",
     "segment_id": "3",
     "pali_roman": "ca",
-    "start_time": "20.130014",
-    "end_time": "20.404265"
+    "start_time": "19.855763",
+    "end_time": "20.130014"
   },
   {
     "word_id": "18",
     "segment_id": "3",
     "pali_roman": "subharo",
-    "start_time": "20.459115",
-    "end_time": "21.227018"
+    "start_time": "20.184864",
+    "end_time": "20.952767"
   },
   {
     "word_id": "19",
     "segment_id": "3",
     "pali_roman": "ca",
-    "start_time": "21.391568",
-    "end_time": "21.885220"
+    "start_time": "21.117317",
+    "end_time": "21.610969"
   },
   {
     "word_id": "20",
     "segment_id": "3",
     "pali_roman": "Appakicco",
-    "start_time": "22.324021",
-    "end_time": "23.887251"
+    "start_time": "22.049770",
+    "end_time": "23.613000"
   },
   {
     "word_id": "21",
     "segment_id": "3",
     "pali_roman": "ca",
-    "start_time": "23.996951",
-    "end_time": "24.243777"
+    "start_time": "23.722701",
+    "end_time": "23.969526"
   },
   {
     "word_id": "22",
     "segment_id": "3",
     "pali_roman": "sallahukavutti",
-    "start_time": "24.326052",
-    "end_time": "26.739460"
+    "start_time": "24.051802",
+    "end_time": "26.465209"
   },
   {
     "word_id": "23",
     "segment_id": "4",
     "pali_roman": "Santindriyo",
-    "start_time": "27.013711",
-    "end_time": "28.768917"
+    "start_time": "26.739460",
+    "end_time": "28.494666"
   },
   {
     "word_id": "24",
     "segment_id": "4",
     "pali_roman": "ca",
-    "start_time": "28.823767",
-    "end_time": "29.317418"
+    "start_time": "28.549516",
+    "end_time": "29.043167"
   },
   {
     "word_id": "25",
     "segment_id": "4",
     "pali_roman": "nipako",
-    "start_time": "29.372269",
-    "end_time": "30.167596"
+    "start_time": "29.098018",
+    "end_time": "29.893345"
   },
   {
     "word_id": "26",
     "segment_id": "4",
     "pali_roman": "ca",
-    "start_time": "30.249871",
-    "end_time": "30.798373"
+    "start_time": "29.975620",
+    "end_time": "30.524122"
   },
   {
     "word_id": "27",
     "segment_id": "4",
     "pali_roman": "Appagabbho",
-    "start_time": "31.072624",
-    "end_time": "32.690704"
+    "start_time": "30.798373",
+    "end_time": "32.416453"
   },
   {
     "word_id": "28",
     "segment_id": "4",
     "pali_roman": "kulesu",
-    "start_time": "32.745554",
-    "end_time": "33.678007"
+    "start_time": "32.471303",
+    "end_time": "33.403756"
   },
   {
     "word_id": "29",
     "segment_id": "4",
     "pali_roman": "ananugiddho",
-    "start_time": "33.732857",
-    "end_time": "35.625188"
+    "start_time": "33.458607",
+    "end_time": "35.350938"
   },
   {
     "word_id": "30",
     "segment_id": "5",
     "pali_roman": "Na",
-    "start_time": "35.926864",
-    "end_time": "36.255965"
+    "start_time": "35.652614",
+    "end_time": "35.981715"
   },
   {
     "word_id": "31",
     "segment_id": "5",
     "pali_roman": "ca",
-    "start_time": "36.283391",
-    "end_time": "36.557641"
+    "start_time": "36.009140",
+    "end_time": "36.283391"
   },
   {
     "word_id": "32",
     "segment_id": "5",
     "pali_roman": "khuddhaṁ",
-    "start_time": "36.585067",
-    "end_time": "37.490094"
+    "start_time": "36.310816",
+    "end_time": "37.215844"
   },
   {
     "word_id": "33",
     "segment_id": "5",
     "pali_roman": "samācare",
-    "start_time": "37.544945",
-    "end_time": "39.025899"
+    "start_time": "37.270694",
+    "end_time": "38.751648"
   },
   {
     "word_id": "34",
     "segment_id": "5",
     "pali_roman": "kiñci",
-    "start_time": "39.108175",
-    "end_time": "40.122903"
+    "start_time": "38.833924",
+    "end_time": "39.848652"
   },
   {
     "word_id": "35",
     "segment_id": "5",
     "pali_roman": "Yena",
-    "start_time": "40.534279",
-    "end_time": "41.398169"
+    "start_time": "40.260028",
+    "end_time": "41.123918"
   },
   {
     "word_id": "36",
     "segment_id": "5",
     "pali_roman": "viññū",
-    "start_time": "41.439307",
-    "end_time": "42.330622"
+    "start_time": "41.165056",
+    "end_time": "42.056371"
   },
   {
     "word_id": "37",
     "segment_id": "5",
     "pali_roman": "pare",
-    "start_time": "42.426610",
-    "end_time": "43.386488"
+    "start_time": "42.152359",
+    "end_time": "43.112237"
   },
   {
     "word_id": "38",
     "segment_id": "5",
     "pali_roman": "upavadeyyuṁ",
-    "start_time": "43.441338",
-    "end_time": "45.114269"
+    "start_time": "43.167087",
+    "end_time": "44.840018"
   },
   {
     "word_id": "39",
     "segment_id": "6",
     "pali_roman": "Sukhino",
-    "start_time": "45.443370",
-    "end_time": "46.485523"
+    "start_time": "45.169119",
+    "end_time": "46.211272"
   },
   {
     "word_id": "40",
     "segment_id": "6",
     "pali_roman": "vā",
-    "start_time": "46.512948",
-    "end_time": "46.924324"
+    "start_time": "46.238697",
+    "end_time": "46.650074"
   },
   {
     "word_id": "41",
     "segment_id": "6",
     "pali_roman": "khemino",
-    "start_time": "47.006600",
-    "end_time": "48.268154"
+    "start_time": "46.732349",
+    "end_time": "47.993903"
   },
   {
     "word_id": "42",
     "segment_id": "6",
     "pali_roman": "hontu",
-    "start_time": "48.323004",
-    "end_time": "49.255457"
+    "start_time": "48.048753",
+    "end_time": "48.981206"
   },
   {
     "word_id": "43",
     "segment_id": "6",
     "pali_roman": "Sabbe",
-    "start_time": "49.749108",
-    "end_time": "50.736412"
+    "start_time": "49.474858",
+    "end_time": "50.462161"
   },
   {
     "word_id": "44",
     "segment_id": "6",
     "pali_roman": "sattā",
-    "start_time": "50.818687",
-    "end_time": "51.751140"
+    "start_time": "50.544436",
+    "end_time": "51.476889"
   },
   {
     "word_id": "45",
     "segment_id": "6",
     "pali_roman": "bhavantu",
-    "start_time": "51.805990",
-    "end_time": "52.765868"
+    "start_time": "51.531739",
+    "end_time": "52.491617"
   },
   {
     "word_id": "46",
     "segment_id": "6",
     "pali_roman": "sukhitattā",
-    "start_time": "52.793293",
-    "end_time": "54.548499"
+    "start_time": "52.519042",
+    "end_time": "54.274248"
   },
   {
     "word_id": "47",
     "segment_id": "7",
     "pali_roman": "Ye",
-    "start_time": "54.795325",
-    "end_time": "55.343826"
+    "start_time": "54.521074",
+    "end_time": "55.069575"
   },
   {
     "word_id": "48",
     "segment_id": "7",
     "pali_roman": "keci",
-    "start_time": "55.398676",
-    "end_time": "56.139154"
+    "start_time": "55.124426",
+    "end_time": "55.864903"
   },
   {
     "word_id": "49",
     "segment_id": "7",
     "pali_roman": "pāṇabhūtatthī",
-    "start_time": "56.194004",
-    "end_time": "58.442861"
+    "start_time": "55.919753",
+    "end_time": "58.168610"
   },
   {
     "word_id": "50",
     "segment_id": "7",
     "pali_roman": "Tasā",
-    "start_time": "58.826812",
-    "end_time": "59.676990"
+    "start_time": "58.552561",
+    "end_time": "59.402739"
   },
   {
     "word_id": "51",
     "segment_id": "7",
     "pali_roman": "vā",
-    "start_time": "59.704415",
-    "end_time": "60.170642"
+    "start_time": "59.430164",
+    "end_time": "59.896391"
   },
   {
     "word_id": "52",
     "segment_id": "7",
     "pali_roman": "thāvarā",
-    "start_time": "60.225492",
-    "end_time": "61.404771"
+    "start_time": "59.951241",
+    "end_time": "61.130520"
   },
   {
     "word_id": "53",
     "segment_id": "7",
     "pali_roman": "vā",
-    "start_time": "61.432196",
-    "end_time": "61.898422"
+    "start_time": "61.157945",
+    "end_time": "61.624171"
   },
   {
     "word_id": "54",
     "segment_id": "7",
     "pali_roman": "anavasesā",
-    "start_time": "61.953272",
-    "end_time": "63.626203"
+    "start_time": "61.679021",
+    "end_time": "63.351952"
   },
   {
     "word_id": "55",
     "segment_id": "8",
     "pali_roman": "Dīghā",
-    "start_time": "64.147279",
-    "end_time": "65.436258"
+    "start_time": "63.873028",
+    "end_time": "65.162008"
   },
   {
     "word_id": "56",
     "segment_id": "8",
     "pali_roman": "vā",
-    "start_time": "65.491109",
-    "end_time": "65.902485"
+    "start_time": "65.216858",
+    "end_time": "65.628234"
   },
   {
     "word_id": "57",
     "segment_id": "8",
     "pali_roman": "ye",
-    "start_time": "65.929910",
-    "end_time": "66.259011"
+    "start_time": "65.655659",
+    "end_time": "65.984760"
   },
   {
     "word_id": "58",
     "segment_id": "8",
     "pali_roman": "mahantā",
-    "start_time": "66.313861",
-    "end_time": "67.534278"
+    "start_time": "66.039610",
+    "end_time": "67.260027"
   },
   {
     "word_id": "59",
     "segment_id": "8",
     "pali_roman": "vā",
-    "start_time": "67.561703",
-    "end_time": "68.206192"
+    "start_time": "67.287452",
+    "end_time": "67.931941"
   },
   {
     "word_id": "60",
     "segment_id": "8",
     "pali_roman": "Majjhimā",
-    "start_time": "68.425593",
-    "end_time": "69.714572"
+    "start_time": "68.151342",
+    "end_time": "69.440321"
   },
   {
     "word_id": "61",
     "segment_id": "8",
     "pali_roman": "rassakāṇukathūlā",
-    "start_time": "69.755710",
-    "end_time": "72.484506"
+    "start_time": "69.481459",
+    "end_time": "72.210255"
   },
   {
     "word_id": "62",
     "segment_id": "9",
     "pali_roman": "Diṭṭhā",
-    "start_time": "72.978157",
-    "end_time": "73.896898"
+    "start_time": "72.703907",
+    "end_time": "73.622647"
   },
   {
     "word_id": "63",
     "segment_id": "9",
     "pali_roman": "vā",
-    "start_time": "73.924323",
-    "end_time": "74.637375"
+    "start_time": "73.650072",
+    "end_time": "74.363124"
   },
   {
     "word_id": "64",
     "segment_id": "9",
     "pali_roman": "yeva",
-    "start_time": "74.664800",
-    "end_time": "75.460128"
+    "start_time": "74.390549",
+    "end_time": "75.185877"
   },
   {
     "word_id": "65",
     "segment_id": "9",
     "pali_roman": "addiṭṭhā",
-    "start_time": "75.473840",
-    "end_time": "76.625694"
+    "start_time": "75.199590",
+    "end_time": "76.351443"
   },
   {
     "word_id": "66",
     "segment_id": "9",
     "pali_roman": "Ye",
-    "start_time": "77.050783",
-    "end_time": "77.489584"
+    "start_time": "76.776532",
+    "end_time": "77.215333"
   },
   {
     "word_id": "67",
     "segment_id": "9",
     "pali_roman": "ca",
-    "start_time": "77.585572",
-    "end_time": "77.832398"
+    "start_time": "77.311321",
+    "end_time": "77.558147"
   },
   {
     "word_id": "68",
     "segment_id": "9",
     "pali_roman": "dūre",
-    "start_time": "77.859823",
-    "end_time": "78.819701"
+    "start_time": "77.585572",
+    "end_time": "78.545450"
   },
   {
     "word_id": "69",
     "segment_id": "9",
     "pali_roman": "vasanti",
-    "start_time": "78.847126",
-    "end_time": "79.930417"
+    "start_time": "78.572875",
+    "end_time": "79.656166"
   },
   {
     "word_id": "70",
     "segment_id": "9",
     "pali_roman": "avidūre",
-    "start_time": "79.957842",
-    "end_time": "81.342809"
+    "start_time": "79.683591",
+    "end_time": "81.068558"
   },
   {
     "word_id": "71",
     "segment_id": "10",
     "pali_roman": "Bhūtā",
-    "start_time": "81.740473",
-    "end_time": "82.878614"
+    "start_time": "81.466222",
+    "end_time": "82.604363"
   },
   {
     "word_id": "72",
     "segment_id": "10",
     "pali_roman": "vā",
-    "start_time": "82.906039",
-    "end_time": "83.385978"
+    "start_time": "82.631788",
+    "end_time": "83.111727"
   },
   {
     "word_id": "73",
     "segment_id": "10",
     "pali_roman": "sambhavesī",
-    "start_time": "83.413403",
-    "end_time": "85.154896"
+    "start_time": "83.139152",
+    "end_time": "84.880645"
   },
   {
     "word_id": "74",
     "segment_id": "10",
     "pali_roman": "vā",
-    "start_time": "85.182321",
-    "end_time": "85.703398"
+    "start_time": "84.908070",
+    "end_time": "85.429147"
   },
   {
     "word_id": "75",
     "segment_id": "10",
     "pali_roman": "Sabbe",
-    "start_time": "86.114774",
-    "end_time": "87.006090"
+    "start_time": "85.840523",
+    "end_time": "86.731839"
   },
   {
     "word_id": "76",
     "segment_id": "10",
     "pali_roman": "sattā",
-    "start_time": "87.088365",
-    "end_time": "88.034530"
+    "start_time": "86.814114",
+    "end_time": "87.760280"
   },
   {
     "word_id": "77",
     "segment_id": "10",
     "pali_roman": "bhavantu",
-    "start_time": "88.075668",
-    "end_time": "89.008121"
+    "start_time": "87.801417",
+    "end_time": "88.733870"
   },
   {
     "word_id": "78",
     "segment_id": "10",
     "pali_roman": "sukhitattā",
-    "start_time": "89.049259",
-    "end_time": "90.598776"
+    "start_time": "88.775008",
+    "end_time": "90.324525"
   },
   {
     "word_id": "79",
     "segment_id": "11",
     "pali_roman": "Na",
-    "start_time": "91.051290",
-    "end_time": "91.284403"
+    "start_time": "90.777039",
+    "end_time": "91.010152"
   },
   {
     "word_id": "80",
     "segment_id": "11",
     "pali_roman": "paro",
-    "start_time": "91.325541",
-    "end_time": "92.066018"
+    "start_time": "91.051290",
+    "end_time": "91.791767"
   },
   {
     "word_id": "81",
     "segment_id": "11",
     "pali_roman": "paraṁ",
-    "start_time": "92.093443",
-    "end_time": "92.861346"
+    "start_time": "91.819192",
+    "end_time": "92.587095"
   },
   {
     "word_id": "82",
     "segment_id": "11",
     "pali_roman": "nikubbetha",
-    "start_time": "92.888771",
-    "end_time": "94.657689"
+    "start_time": "92.614520",
+    "end_time": "94.383438"
   },
   {
     "word_id": "83",
     "segment_id": "11",
     "pali_roman": "Nātimaññetha",
-    "start_time": "95.041640",
-    "end_time": "97.331635"
+    "start_time": "94.767389",
+    "end_time": "97.057384"
   },
   {
     "word_id": "84",
     "segment_id": "11",
     "pali_roman": "katthaci",
-    "start_time": "97.441335",
-    "end_time": "97.962412"
+    "start_time": "97.167084",
+    "end_time": "97.688161"
   },
   {
     "word_id": "85",
     "segment_id": "11",
     "pali_roman": "naṁ",
-    "start_time": "97.989837",
-    "end_time": "98.483489"
+    "start_time": "97.715586",
+    "end_time": "98.209238"
   },
   {
     "word_id": "86",
     "segment_id": "11",
     "pali_roman": "kanci",
-    "start_time": "98.510914",
-    "end_time": "99.498217"
+    "start_time": "98.236663",
+    "end_time": "99.223966"
   },
   {
     "word_id": "87",
     "segment_id": "12",
     "pali_roman": "Byārosanā",
-    "start_time": "100.019294",
-    "end_time": "101.856774"
+    "start_time": "99.745043",
+    "end_time": "101.582524"
   },
   {
     "word_id": "88",
     "segment_id": "12",
     "pali_roman": "paṭighasaññā",
-    "start_time": "101.897912",
-    "end_time": "103.639405"
+    "start_time": "101.623661",
+    "end_time": "103.365154"
   },
   {
     "word_id": "89",
     "segment_id": "12",
     "pali_roman": "Nāññamaññassa",
-    "start_time": "104.064494",
-    "end_time": "106.272213"
+    "start_time": "103.790243",
+    "end_time": "105.997963"
   },
   {
     "word_id": "90",
     "segment_id": "12",
     "pali_roman": "dukkhamiccheyya",
-    "start_time": "106.299639",
-    "end_time": "108.452508"
+    "start_time": "106.025388",
+    "end_time": "108.178257"
   },
   {
     "word_id": "91",
     "segment_id": "13",
     "pali_roman": "Mātā",
-    "start_time": "108.795321",
-    "end_time": "109.837475"
+    "start_time": "108.521071",
+    "end_time": "109.563224"
   },
   {
     "word_id": "92",
     "segment_id": "13",
     "pali_roman": "yathā",
-    "start_time": "109.864900",
-    "end_time": "110.783640"
+    "start_time": "109.590649",
+    "end_time": "110.509389"
   },
   {
     "word_id": "93",
     "segment_id": "13",
     "pali_roman": "niyaṁ",
-    "start_time": "110.824778",
-    "end_time": "111.359567"
+    "start_time": "110.550527",
+    "end_time": "111.085316"
   },
   {
     "word_id": "94",
     "segment_id": "13",
     "pali_roman": "puttaṁ",
-    "start_time": "111.441842",
-    "end_time": "112.305733"
+    "start_time": "111.167592",
+    "end_time": "112.031482"
   },
   {
     "word_id": "95",
     "segment_id": "13",
     "pali_roman": "Āyusā",
-    "start_time": "112.799384",
-    "end_time": "114.088363"
+    "start_time": "112.525133",
+    "end_time": "113.814112"
   },
   {
     "word_id": "96",
     "segment_id": "13",
     "pali_roman": "ekaputtamanurakkhe",
-    "start_time": "114.143214",
-    "end_time": "117.009135"
+    "start_time": "113.868963",
+    "end_time": "116.734884"
   },
   {
     "word_id": "97",
     "segment_id": "14",
     "pali_roman": "Evam’pi",
-    "start_time": "117.447937",
-    "end_time": "118.668353"
+    "start_time": "117.173686",
+    "end_time": "118.394102"
   },
   {
     "word_id": "98",
     "segment_id": "14",
     "pali_roman": "sabbabhūtesu",
-    "start_time": "118.709491",
-    "end_time": "120.917210"
+    "start_time": "118.435240",
+    "end_time": "120.642959"
   },
   {
     "word_id": "99",
     "segment_id": "14",
     "pali_roman": "Mānasaṁ",
-    "start_time": "121.342299",
-    "end_time": "122.644991"
+    "start_time": "121.068048",
+    "end_time": "122.370740"
   },
   {
     "word_id": "100",
     "segment_id": "14",
     "pali_roman": "bhāvaye",
-    "start_time": "122.740978",
-    "end_time": "124.084808"
+    "start_time": "122.466728",
+    "end_time": "123.810557"
   },
   {
     "word_id": "101",
     "segment_id": "14",
     "pali_roman": "aparimāṇaṁ",
-    "start_time": "124.112233",
-    "end_time": "125.744025"
+    "start_time": "123.837982",
+    "end_time": "125.469775"
   },
   {
     "word_id": "102",
     "segment_id": "15",
     "pali_roman": "Mettaṁ",
-    "start_time": "126.045701",
-    "end_time": "127.005579"
+    "start_time": "125.771451",
+    "end_time": "126.731329"
   },
   {
     "word_id": "103",
     "segment_id": "15",
     "pali_roman": "ca",
-    "start_time": "127.033005",
-    "end_time": "127.279830"
+    "start_time": "126.758754",
+    "end_time": "127.005579"
   },
   {
     "word_id": "104",
     "segment_id": "15",
     "pali_roman": "sabba",
-    "start_time": "127.307255",
-    "end_time": "127.992883"
+    "start_time": "127.033005",
+    "end_time": "127.718632"
   },
   {
     "word_id": "105",
     "segment_id": "15",
     "pali_roman": "lokasmiṁ",
-    "start_time": "128.020308",
-    "end_time": "129.460125"
+    "start_time": "127.746057",
+    "end_time": "129.185874"
   },
   {
     "word_id": "106",
     "segment_id": "15",
     "pali_roman": "Mānasaṁ",
-    "start_time": "129.940064",
-    "end_time": "131.091918"
+    "start_time": "129.665813",
+    "end_time": "130.817667"
   },
   {
     "word_id": "107",
     "segment_id": "15",
     "pali_roman": "bhāvaye",
-    "start_time": "131.146768",
-    "end_time": "132.614010"
+    "start_time": "130.872517",
+    "end_time": "132.339759"
   },
   {
     "word_id": "108",
     "segment_id": "15",
     "pali_roman": "aparimāṇaṁ",
-    "start_time": "132.682573",
-    "end_time": "134.149815"
+    "start_time": "132.408322",
+    "end_time": "133.875564"
   },
   {
     "word_id": "109",
     "segment_id": "16",
     "pali_roman": "Uddhaṁ",
-    "start_time": "134.643466",
-    "end_time": "135.411369"
+    "start_time": "134.369215",
+    "end_time": "135.137118"
   },
   {
     "word_id": "110",
     "segment_id": "16",
     "pali_roman": "adho",
-    "start_time": "135.466219",
-    "end_time": "136.247834"
+    "start_time": "135.191968",
+    "end_time": "135.973583"
   },
   {
     "word_id": "111",
     "segment_id": "16",
     "pali_roman": "ca",
-    "start_time": "136.288972",
-    "end_time": "136.535797"
+    "start_time": "136.014721",
+    "end_time": "136.261546"
   },
   {
     "word_id": "112",
     "segment_id": "16",
     "pali_roman": "tiriyañca",
-    "start_time": "136.576935",
-    "end_time": "138.071602"
+    "start_time": "136.302684",
+    "end_time": "137.797351"
   },
   {
     "word_id": "113",
     "segment_id": "16",
     "pali_roman": "Asaṁbādhaṁ",
-    "start_time": "138.455553",
-    "end_time": "140.197047"
+    "start_time": "138.181303",
+    "end_time": "139.922796"
   },
   {
     "word_id": "114",
     "segment_id": "16",
     "pali_roman": "averaṁ",
-    "start_time": "140.238184",
-    "end_time": "141.527163"
+    "start_time": "139.963933",
+    "end_time": "141.252912"
   },
   {
     "word_id": "115",
     "segment_id": "16",
     "pali_roman": "asapattaṁ",
-    "start_time": "141.554588",
-    "end_time": "142.953268"
+    "start_time": "141.280337",
+    "end_time": "142.679017"
   },
   {
     "word_id": "116",
     "segment_id": "17",
     "pali_roman": "Tiṭṭhaṁ",
-    "start_time": "143.392069",
-    "end_time": "144.283385"
+    "start_time": "143.117818",
+    "end_time": "144.009134"
   },
   {
     "word_id": "117",
     "segment_id": "17",
     "pali_roman": "caraṁ",
-    "start_time": "144.351947",
-    "end_time": "144.969012"
+    "start_time": "144.077696",
+    "end_time": "144.694761"
   },
   {
     "word_id": "118",
     "segment_id": "17",
     "pali_roman": "nisinno",
-    "start_time": "145.037574",
-    "end_time": "146.134578"
+    "start_time": "144.763324",
+    "end_time": "145.860327"
   },
   {
     "word_id": "119",
     "segment_id": "17",
     "pali_roman": "vā",
-    "start_time": "146.175716",
-    "end_time": "146.751642"
+    "start_time": "145.901465",
+    "end_time": "146.477392"
   },
   {
     "word_id": "120",
     "segment_id": "17",
     "pali_roman": "Sayāno",
-    "start_time": "147.204156",
-    "end_time": "148.410860"
+    "start_time": "146.929905",
+    "end_time": "148.136609"
   },
   {
     "word_id": "121",
     "segment_id": "17",
     "pali_roman": "vā",
-    "start_time": "148.451998",
-    "end_time": "148.945649"
+    "start_time": "148.177747",
+    "end_time": "148.671398"
   },
   {
     "word_id": "122",
     "segment_id": "17",
     "pali_roman": "yāvata’ssa",
-    "start_time": "149.000500",
-    "end_time": "150.454029"
+    "start_time": "148.726249",
+    "end_time": "150.179778"
   },
   {
     "word_id": "123",
     "segment_id": "17",
     "pali_roman": "vigatamiddho",
-    "start_time": "150.481454",
-    "end_time": "152.113247"
+    "start_time": "150.207203",
+    "end_time": "151.838996"
   },
   {
     "word_id": "124",
     "segment_id": "18",
     "pali_roman": "Etaṁ",
-    "start_time": "152.675461",
-    "end_time": "153.607914"
+    "start_time": "152.401210",
+    "end_time": "153.333663"
   },
   {
     "word_id": "125",
     "segment_id": "18",
     "pali_roman": "satiṁ",
-    "start_time": "153.635339",
-    "end_time": "154.362104"
+    "start_time": "153.361088",
+    "end_time": "154.087853"
   },
   {
     "word_id": "126",
     "segment_id": "18",
     "pali_roman": "adhiṭṭheyya",
-    "start_time": "154.389529",
-    "end_time": "156.062460"
+    "start_time": "154.115278",
+    "end_time": "155.788209"
   },
   {
     "word_id": "127",
     "segment_id": "18",
     "pali_roman": "Brahmametaṁ",
-    "start_time": "156.432698",
-    "end_time": "158.037066"
+    "start_time": "156.158447",
+    "end_time": "157.762815"
   },
   {
     "word_id": "128",
     "segment_id": "18",
     "pali_roman": "vihāraṁ",
-    "start_time": "158.187904",
-    "end_time": "159.339757"
+    "start_time": "157.913653",
+    "end_time": "159.065507"
   },
   {
     "word_id": "129",
     "segment_id": "18",
     "pali_roman": "idhamāhu",
-    "start_time": "159.435745",
-    "end_time": "160.807000"
+    "start_time": "159.161494",
+    "end_time": "160.532749"
   },
   {
     "word_id": "130",
     "segment_id": "19",
     "pali_roman": "Diṭṭhiṁ",
-    "start_time": "161.396639",
-    "end_time": "162.137116"
+    "start_time": "161.122388",
+    "end_time": "161.862866"
   },
   {
     "word_id": "131",
     "segment_id": "19",
     "pali_roman": "ca",
-    "start_time": "",
-    "end_time": ""
+    "start_time": "161.958853",
+    "end_time": "162.219392"
   },
   {
     "word_id": "132",
     "segment_id": "19",
     "pali_roman": "anupagamma",
-    "start_time": "162.521068",
-    "end_time": "164.056873"
+    "start_time": "162.246817",
+    "end_time": "163.782622"
   },
   {
     "word_id": "133",
     "segment_id": "19",
     "pali_roman": "sīlavā",
-    "start_time": "164.098010",
-    "end_time": "165.332139"
+    "start_time": "163.823759",
+    "end_time": "165.057888"
   },
   {
     "word_id": "134",
     "segment_id": "19",
     "pali_roman": "Dassanena",
-    "start_time": "165.688665",
-    "end_time": "167.183332"
+    "start_time": "165.414414",
+    "end_time": "166.909082"
   },
   {
     "word_id": "135",
     "segment_id": "19",
     "pali_roman": "sampanno",
-    "start_time": "167.224470",
-    "end_time": "168.705425"
+    "start_time": "166.950219",
+    "end_time": "168.431174"
   },
   {
     "word_id": "136",
     "segment_id": "20",
     "pali_roman": "Kāmesu",
-    "start_time": "169.130514",
-    "end_time": "170.666319"
+    "start_time": "168.856263",
+    "end_time": "170.392068"
   },
   {
     "word_id": "137",
     "segment_id": "20",
     "pali_roman": "vineyya",
-    "start_time": "170.707456",
-    "end_time": "171.461646"
+    "start_time": "170.433205",
+    "end_time": "171.187395"
   },
   {
     "word_id": "138",
     "segment_id": "20",
     "pali_roman": "gedhaṁ",
-    "start_time": "171.502784",
-    "end_time": "172.421524"
+    "start_time": "171.228533",
+    "end_time": "172.147273"
   },
   {
     "word_id": "139",
     "segment_id": "20",
     "pali_roman": "Na",
-    "start_time": "172.874038",
-    "end_time": "173.189427"
+    "start_time": "172.599787",
+    "end_time": "172.915176"
   },
   {
     "word_id": "140",
     "segment_id": "20",
     "pali_roman": "hi",
-    "start_time": "173.216852",
-    "end_time": "173.477390"
+    "start_time": "172.942601",
+    "end_time": "173.203139"
   },
   {
     "word_id": "141",
     "segment_id": "20",
     "pali_roman": "jātu",
-    "start_time": "173.504815",
-    "end_time": "174.245292"
+    "start_time": "173.230564",
+    "end_time": "173.971042"
   },
   {
     "word_id": "142",
     "segment_id": "20",
     "pali_roman": "gabbhaseyyaṁ",
-    "start_time": "174.286430",
-    "end_time": "175.904510"
+    "start_time": "174.012179",
+    "end_time": "175.630259"
   },
   {
     "word_id": "143",
     "segment_id": "20",
     "pali_roman": "punaretī’ti",
-    "start_time": "176.000498",
-    "end_time": "178.523606"
+    "start_time": "175.726247",
+    "end_time": "178.249355"
   },
   {
     "word_id": "144",
