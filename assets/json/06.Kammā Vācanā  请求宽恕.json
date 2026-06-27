@@ -1,0 +1,289 @@
+[
+  {
+    "word_id": "1",
+    "segment_id": "1",
+    "pali_roman": "Kāyena",
+    "start_time": "0.229176",
+    "end_time": "1.766566"
+  },
+  {
+    "word_id": "2",
+    "segment_id": "1",
+    "pali_roman": "vācā",
+    "start_time": "1.804762",
+    "end_time": "3.027035"
+  },
+  {
+    "word_id": "3",
+    "segment_id": "1",
+    "pali_roman": "cittena",
+    "start_time": "3.122525",
+    "end_time": "4.784052"
+  },
+  {
+    "word_id": "4",
+    "segment_id": "1",
+    "pali_roman": "pamādena",
+    "start_time": "5.137365",
+    "end_time": "7.257244"
+  },
+  {
+    "word_id": "5",
+    "segment_id": "1",
+    "pali_roman": "mayā",
+    "start_time": "7.285891",
+    "end_time": "8.126203"
+  },
+  {
+    "word_id": "6",
+    "segment_id": "1",
+    "pali_roman": "kataṁ",
+    "start_time": "8.145301",
+    "end_time": "9.243437"
+  },
+  {
+    "word_id": "7",
+    "segment_id": "2",
+    "pali_roman": "Accayaṁ",
+    "start_time": "9.501260",
+    "end_time": "10.895415"
+  },
+  {
+    "word_id": "8",
+    "segment_id": "2",
+    "pali_roman": "khama",
+    "start_time": "10.943160",
+    "end_time": "11.668884"
+  },
+  {
+    "word_id": "9",
+    "segment_id": "2",
+    "pali_roman": "me",
+    "start_time": "11.697531",
+    "end_time": "12.174982"
+  },
+  {
+    "word_id": "10",
+    "segment_id": "2",
+    "pali_roman": "bhante",
+    "start_time": "12.194080",
+    "end_time": "13.406803"
+  },
+  {
+    "word_id": "11",
+    "segment_id": "2",
+    "pali_roman": "Bhūri",
+    "start_time": "13.855607",
+    "end_time": "14.743664"
+  },
+  {
+    "word_id": "12",
+    "segment_id": "2",
+    "pali_roman": "pañña",
+    "start_time": "14.762762",
+    "end_time": "15.870447"
+  },
+  {
+    "word_id": "13",
+    "segment_id": "2",
+    "pali_roman": "tathāgata",
+    "start_time": "15.908643",
+    "end_time": "17.808895"
+  },
+  {
+    "word_id": "14",
+    "segment_id": "3",
+    "pali_roman": "Kāyena",
+    "start_time": "18.372286",
+    "end_time": "19.785539"
+  },
+  {
+    "word_id": "15",
+    "segment_id": "3",
+    "pali_roman": "vācā",
+    "start_time": "19.804637",
+    "end_time": "21.122399"
+  },
+  {
+    "word_id": "16",
+    "segment_id": "3",
+    "pali_roman": "cittena",
+    "start_time": "21.170144",
+    "end_time": "22.936710"
+  },
+  {
+    "word_id": "17",
+    "segment_id": "3",
+    "pali_roman": "pamādena",
+    "start_time": "23.232730",
+    "end_time": "25.314413"
+  },
+  {
+    "word_id": "18",
+    "segment_id": "3",
+    "pali_roman": "mayā",
+    "start_time": "25.333511",
+    "end_time": "26.212019"
+  },
+  {
+    "word_id": "19",
+    "segment_id": "3",
+    "pali_roman": "kataṁ",
+    "start_time": "26.231117",
+    "end_time": "27.252861"
+  },
+  {
+    "word_id": "20",
+    "segment_id": "4",
+    "pali_roman": "Accayaṁ",
+    "start_time": "27.548880",
+    "end_time": "29.028976"
+  },
+  {
+    "word_id": "21",
+    "segment_id": "4",
+    "pali_roman": "khama",
+    "start_time": "29.048074",
+    "end_time": "29.917033"
+  },
+  {
+    "word_id": "22",
+    "segment_id": "4",
+    "pali_roman": "me",
+    "start_time": "29.936131",
+    "end_time": "30.232150"
+  },
+  {
+    "word_id": "23",
+    "segment_id": "4",
+    "pali_roman": "dhamma",
+    "start_time": "30.289444",
+    "end_time": "31.483070"
+  },
+  {
+    "word_id": "24",
+    "segment_id": "4",
+    "pali_roman": "Sanditthika",
+    "start_time": "31.931873",
+    "end_time": "33.564753"
+  },
+  {
+    "word_id": "25",
+    "segment_id": "4",
+    "pali_roman": "akālika",
+    "start_time": "33.583851",
+    "end_time": "35.388613"
+  },
+  {
+    "word_id": "26",
+    "segment_id": "5",
+    "pali_roman": "Kāyena",
+    "start_time": "35.980651",
+    "end_time": "37.479845"
+  },
+  {
+    "word_id": "27",
+    "segment_id": "5",
+    "pali_roman": "vācā",
+    "start_time": "37.508492",
+    "end_time": "38.702118"
+  },
+  {
+    "word_id": "28",
+    "segment_id": "5",
+    "pali_roman": "cittena",
+    "start_time": "38.730765",
+    "end_time": "40.411390"
+  },
+  {
+    "word_id": "29",
+    "segment_id": "5",
+    "pali_roman": "pamādena",
+    "start_time": "40.821997",
+    "end_time": "42.941876"
+  },
+  {
+    "word_id": "30",
+    "segment_id": "5",
+    "pali_roman": "mayā",
+    "start_time": "42.989621",
+    "end_time": "43.810836"
+  },
+  {
+    "word_id": "31",
+    "segment_id": "5",
+    "pali_roman": "kataṁ",
+    "start_time": "43.829934",
+    "end_time": "44.842128"
+  },
+  {
+    "word_id": "32",
+    "segment_id": "6",
+    "pali_roman": "Accayaṁ",
+    "start_time": "45.195441",
+    "end_time": "46.665988"
+  },
+  {
+    "word_id": "33",
+    "segment_id": "6",
+    "pali_roman": "khama",
+    "start_time": "46.694635",
+    "end_time": "47.315321"
+  },
+  {
+    "word_id": "34",
+    "segment_id": "6",
+    "pali_roman": "me",
+    "start_time": "47.334419",
+    "end_time": "47.840516"
+  },
+  {
+    "word_id": "35",
+    "segment_id": "6",
+    "pali_roman": "saṅgha",
+    "start_time": "47.869163",
+    "end_time": "49.148730"
+  },
+  {
+    "word_id": "36",
+    "segment_id": "6",
+    "pali_roman": "puññak",
+    "start_time": "49.616631",
+    "end_time": "50.810257"
+  },
+  {
+    "word_id": "37",
+    "segment_id": "6",
+    "pali_roman": "kettaṁ",
+    "start_time": "50.829355",
+    "end_time": "52.022980"
+  },
+  {
+    "word_id": "38",
+    "segment_id": "6",
+    "pali_roman": "anuttara",
+    "start_time": "52.042078",
+    "end_time": "53.665409"
+  },
+  {
+    "word_id": "39",
+    "segment_id": "7",
+    "pali_roman": "Sādhu",
+    "start_time": "54.553467",
+    "end_time": "56.329582"
+  },
+  {
+    "word_id": "40",
+    "segment_id": "7",
+    "pali_roman": "Sādhu",
+    "start_time": "56.892973",
+    "end_time": "58.869617"
+  },
+  {
+    "word_id": "41",
+    "segment_id": "7",
+    "pali_roman": "Sādhu",
+    "start_time": "59.222930",
+    "end_time": "60.693477"
+  }
+]

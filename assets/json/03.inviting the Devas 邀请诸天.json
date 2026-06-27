@@ -1,0 +1,212 @@
+[
+  {
+    "word_id": "1",
+    "segment_id": "1",
+    "pali_roman": "Samantā",
+    "start_time": "0.168768",
+    "end_time": "2.310818"
+  },
+  {
+    "word_id": "2",
+    "segment_id": "1",
+    "pali_roman": "cakka",
+    "start_time": "2.323800",
+    "end_time": "3.128692"
+  },
+  {
+    "word_id": "3",
+    "segment_id": "1",
+    "pali_roman": "vālesu",
+    "start_time": "3.141674",
+    "end_time": "5.452492"
+  },
+  {
+    "word_id": "4",
+    "segment_id": "1",
+    "pali_roman": "Atrā",
+    "start_time": "5.738099",
+    "end_time": "7.218061"
+  },
+  {
+    "word_id": "5",
+    "segment_id": "1",
+    "pali_roman": "gacchantu",
+    "start_time": "7.257007",
+    "end_time": "8.594166"
+  },
+  {
+    "word_id": "6",
+    "segment_id": "1",
+    "pali_roman": "devatā",
+    "start_time": "8.607148",
+    "end_time": "10.684288"
+  },
+  {
+    "word_id": "7",
+    "segment_id": "2",
+    "pali_roman": "Sad",
+    "start_time": "10.827091",
+    "end_time": "11.709875"
+  },
+  {
+    "word_id": "8",
+    "segment_id": "2",
+    "pali_roman": "dhammaṁ",
+    "start_time": "11.722858",
+    "end_time": "12.514767"
+  },
+  {
+    "word_id": "9",
+    "segment_id": "2",
+    "pali_roman": "muni",
+    "start_time": "12.527749",
+    "end_time": "13.345623"
+  },
+  {
+    "word_id": "10",
+    "segment_id": "2",
+    "pali_roman": "rājassa",
+    "start_time": "13.358605",
+    "end_time": "15.202067"
+  },
+  {
+    "word_id": "11",
+    "segment_id": "2",
+    "pali_roman": "Sunantu",
+    "start_time": "15.422763",
+    "end_time": "17.123421"
+  },
+  {
+    "word_id": "12",
+    "segment_id": "2",
+    "pali_roman": "sagga",
+    "start_time": "17.149385",
+    "end_time": "17.915331"
+  },
+  {
+    "word_id": "13",
+    "segment_id": "2",
+    "pali_roman": "mokkha",
+    "start_time": "17.928313",
+    "end_time": "18.642329"
+  },
+  {
+    "word_id": "14",
+    "segment_id": "2",
+    "pali_roman": "daṁ",
+    "start_time": "18.655312",
+    "end_time": "19.551078"
+  },
+  {
+    "word_id": "15",
+    "segment_id": "3",
+    "pali_roman": "Parittas",
+    "start_time": "19.888613",
+    "end_time": "21.031040"
+  },
+  {
+    "word_id": "16",
+    "segment_id": "3",
+    "pali_roman": "savanna",
+    "start_time": "21.044022",
+    "end_time": "22.030664"
+  },
+  {
+    "word_id": "17",
+    "segment_id": "3",
+    "pali_roman": "kālo",
+    "start_time": "22.043646",
+    "end_time": "23.614483"
+  },
+  {
+    "word_id": "18",
+    "segment_id": "3",
+    "pali_roman": "ayaṁ",
+    "start_time": "23.666411",
+    "end_time": "24.536214"
+  },
+  {
+    "word_id": "19",
+    "segment_id": "3",
+    "pali_roman": "bhadantā",
+    "start_time": "24.575160",
+    "end_time": "26.639318"
+  },
+  {
+    "word_id": "20",
+    "segment_id": "4",
+    "pali_roman": "Parittas",
+    "start_time": "26.795103",
+    "end_time": "27.937530"
+  },
+  {
+    "word_id": "21",
+    "segment_id": "4",
+    "pali_roman": "savana",
+    "start_time": "27.963494",
+    "end_time": "29.015046"
+  },
+  {
+    "word_id": "22",
+    "segment_id": "4",
+    "pali_roman": "kālo",
+    "start_time": "29.053993",
+    "end_time": "30.469044"
+  },
+  {
+    "word_id": "23",
+    "segment_id": "4",
+    "pali_roman": "ayaṁ",
+    "start_time": "30.676758",
+    "end_time": "31.559542"
+  },
+  {
+    "word_id": "24",
+    "segment_id": "4",
+    "pali_roman": "bhadantā",
+    "start_time": "31.585507",
+    "end_time": "33.519843"
+  },
+  {
+    "word_id": "25",
+    "segment_id": "5",
+    "pali_roman": "Paritta",
+    "start_time": "33.766503",
+    "end_time": "35.207519"
+  },
+  {
+    "word_id": "26",
+    "segment_id": "5",
+    "pali_roman": "Dhammas",
+    "start_time": "35.298394",
+    "end_time": "36.298017"
+  },
+  {
+    "word_id": "27",
+    "segment_id": "5",
+    "pali_roman": "savana",
+    "start_time": "36.336964",
+    "end_time": "37.206766"
+  },
+  {
+    "word_id": "28",
+    "segment_id": "5",
+    "pali_roman": "akālo",
+    "start_time": "37.232730",
+    "end_time": "38.725675"
+  },
+  {
+    "word_id": "29",
+    "segment_id": "5",
+    "pali_roman": "ayam",
+    "start_time": "38.920406",
+    "end_time": "39.803191"
+  },
+  {
+    "word_id": "30",
+    "segment_id": "5",
+    "pali_roman": "bhadantā",
+    "start_time": "39.855119",
+    "end_time": "41.893313"
+  }
+]

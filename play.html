@@ -102,27 +102,48 @@ function cleanWord(w) { return (w.match(PALI_RE) || []).join(''); }
 
 // ─── Track definitions ───
 const tracks = [
-  { id: '01', name: 'Homage Tisarana · 礼敬佛陀 三皈依',
+  { 
+    id: '01', 
+    name: 'Homage Tisarana · 礼敬佛陀 三皈依',
     audio: '01.Homage Tisarana 礼敬佛陀 三皈依.mp3',
-    json: '01.Homage Tisarana 礼敬佛陀 三皈依.json', hasJson: true },
-  { id: '02', name: 'Main Puja · 佛随念 礼敬七佛',
+    json: '01.Homage Tisarana 礼敬佛陀 三皈依.json', 
+    hasJson: true 
+  },
+  { 
+    id: '02', 
+    name: 'Main Puja · 佛随念 礼敬七佛',
     audio: '02.Main Puja 佛随念 礼敬七佛.mp3',
-    json: null, hasJson: false },
-  { id: '03', name: 'Inviting the Devas · 邀请诸天',
+    json: '02.Main Puja 佛随念 礼敬七佛.json', 
+    hasJson: true
+  },
+  { 
+    id: '03', 
+    name: 'Inviting the Devas · 邀请诸天',
     audio: '03.inviting the Devas 邀请诸天.mp3',
-    json: null, hasJson: false },
-  { id: '04', name: 'Maha Maṅgala Sutta · 大吉祥经',
+    json: '03.inviting the Devas 邀请诸天.json', 
+    hasJson: true
+  },
+  { 
+    id: '04', 
+    name: 'Maha Maṅgala Sutta · 大吉祥经',
     audio: '04.Maha Maṅgala Suttaṁ 大吉祥经.mp3',
-    json: null, hasJson: false },
-  { id: '05', name: 'Ratana Suttam · 珍宝经',
-    audio: '05.Ratana Suttam 珍宝经.mp3',
-    json: null, hasJson: false },
-  { id: '06', name: 'Karaṇīya Metta Sutta · 应行慈爱经',
-    audio: '06.Karaniya metta Sutta 应行慈爱经.mp3',
-    json: null, hasJson: false },
-  { id: '07', name: 'Kammā Vācanā · 请求宽恕',
-    audio: '07.Kammā Vācanā  请求宽恕.mp3',
-    json: null, hasJson: false },
+    json: '04.Maha Maṅgala Suttaṁ 大吉祥经.json', 
+    hasJson: true 
+  },
+  { 
+    id: '05', 
+    name: 'Karaṇīya Metta Sutta · 应行慈爱经',
+    audio: '05.Karaniya metta Sutta 应行慈爱经.mp3',
+    json: '05.Karaniya metta Sutta 应行慈爱经.json', 
+    hasJson: true 
+  },
+  { 
+    id: '06', 
+    name: 'Kammā Vācanā · 请求宽恕',
+    audio: '06.Kammā Vācanā  请求宽恕.mp3',
+    json: '06.Kammā Vācanā  请求宽恕.json', 
+    hasJson: true 
+  },
 ];
 
 // ─── Parse original Pali text into paragraph/line/token structure ───
@@ -153,7 +174,7 @@ function alignWithJson(paragraphs, jsonWords) {
   for (const p of paragraphs) {
     for (const line of p.lines) {
       for (const token of line.tokens) {
-        const rawParts = token.display.split('-');
+        const rawParts = token.display.split(/[-–—]/);
         const parts = [];
         for (let i = 0; i < rawParts.length; i++) {
           const segment = rawParts[i];
