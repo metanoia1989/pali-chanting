@@ -1,5 +1,14 @@
-import { createApp, ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
+import { createApp, ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import allData from 'virtual:pali-data'
+
+// ─── Persistent user settings ───
+const STORE_KEY = 'pali-chant-settings'
+function loadSet() {
+  try { return JSON.parse(localStorage.getItem(STORE_KEY)) || {} } catch { return {} }
+}
+function saveSet(s) {
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(s)) } catch {}
+}
 
 // ─── Pali lexicon regex (mirrors generate_csv.py) ───
 const PALI_RE = /[a-zA-ZāĀīĪūŪṃṀṁṅṄñÑṭṬḍḌṇṆḷḶ'’]+/g;
@@ -162,8 +171,25 @@ createApp({
     const progressBar = ref(null);
     const textAreaEl = ref(null);
     const sidebarOpen = ref(false);
-    const showEn = ref(true);
-    const showCn = ref(true);
+
+    // Persistent user settings
+    const saved = loadSet();
+    const showEn = ref(saved.showEn !== false);
+    const showCn = ref(saved.showCn !== false);
+    const fontSize = ref(typeof saved.fontSize === 'number' ? saved.fontSize : 100);
+
+    watch([showEn, showCn, fontSize], () => {
+      saveSet({ showEn: showEn.value, showCn: showCn.value, fontSize: fontSize.value });
+    });
+
+    function adjustFontSize(delta) {
+      fontSize.value = Math.max(70, Math.min(150, fontSize.value + delta));
+    }
+    function resetSettings() {
+      showEn.value = true;
+      showCn.value = true;
+      fontSize.value = 100;
+    }
 
     let audio = null;
     let rafId = null;
@@ -349,8 +375,10 @@ createApp({
       tracks, current, playing, audioReady,
       currentTime, duration, paragraphs, flatParts,
       progressPct, progressBar, textAreaEl, sidebarOpen,
-      showEn, showCn,
-      selectTrack, togglePlay, seek, seekTo, toggleSidebar, randomTrack, toggleTrans,
+      showEn, showCn, fontSize,
+      selectTrack, togglePlay, seek, seekTo,
+      toggleSidebar, randomTrack, toggleTrans,
+      adjustFontSize, resetSettings,
       partClass, fmtTime, isLineFinished,
     };
   }

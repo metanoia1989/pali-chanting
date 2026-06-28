@@ -55,7 +55,7 @@
     </div>
 
     <template v-else>
-      <div class="track-title">{{ current.name }}</div>
+      <div class="track-title"><span>{{ current.name }}</span><button class="btn-random-title" @click="randomTrack" title="随机切换">🎲</button></div>
       <div class="track-meta">{{ current.id }} · {{ current.hasJson ? '单词级高亮' : '暂无时间戳标注' }}</div>
 
       <!-- Banner -->
@@ -77,15 +77,20 @@
         </div>
       </div>
 
-      <!-- Translation toggles -->
+      <!-- Translation toggles + font controls -->
       <div v-if="paragraphs.length" class="trans-toggles">
         <span class="trans-label">翻译</span>
         <button class="trans-btn" :class="{ on: showEn }" @click="toggleTrans('en')">EN</button>
         <button class="trans-btn" :class="{ on: showCn }" @click="toggleTrans('cn')">中文</button>
+        <span class="toggles-right">
+          <button class="fs-btn" @click="adjustFontSize(-5)" title="缩小字体" :disabled="fontSize <= 70">A⁻</button>
+          <button class="fs-btn" @click="adjustFontSize(5)" title="放大字体" :disabled="fontSize >= 150">A⁺</button>
+          <button class="fs-btn reset" @click="resetSettings" title="恢复默认">↺</button>
+        </span>
       </div>
 
       <!-- Text: original Pali text with translations -->
-      <div class="text-area" ref="textAreaEl">
+      <div class="text-area" ref="textAreaEl" :style="{ '--fs': fontSize / 100 }">
         <template v-if="paragraphs.length">
           <div v-for="(p, pi) in paragraphs" :key="pi" class="paragraph">
             <div v-for="(line, li) in p.lines" :key="li" class="line-group">
