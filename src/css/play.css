@@ -173,10 +173,9 @@ html, body { height: 100%; }
 }
 .trans-line.dim { color: var(--muted); }
 .word {
-  display: inline; padding: 2px 3px; border-radius: 4px;
+  display: inline-block; padding: 2px 3px; border-radius: 4px;
   cursor: default; transition: all 0.15s;
   font-size: calc(1.05rem * var(--fs, 1)); line-height: 2;
-  overflow-wrap: break-word;
 }
 .word.dim { color: var(--muted); }
 .word.active {
@@ -186,7 +185,7 @@ html, body { height: 100%; }
 .word.clickable { cursor: pointer; }
 .word.clickable:hover { background: var(--sand-dark); }
 .word.active:hover { background: var(--gold); }
-.part-sep { color: var(--muted); user-select: none; }
+.part-sep { display: inline-block; color: var(--muted); user-select: none; }
 .word:has(+ .part-sep) { padding-right: 0; }
 .part-sep + .word { padding-left: 0; }
 
