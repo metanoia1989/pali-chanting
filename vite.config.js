@@ -17,6 +17,27 @@ const TRACKS = [
   { id: '06', audio: '06.Kammā Vācanā  请求宽恕.mp3', json: '06.Kammā Vācanā  请求宽恕.json' },
 ]
 
+function baiduAnalyticsPlugin() {
+  const snippet = `var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?736963b93e68233998f84932a8dfc603";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();`
+  return {
+    name: 'baidu-analytics',
+    transformIndexHtml: {
+      order: 'post',
+      handler(html, ctx) {
+        return [
+          { tag: 'script', children: snippet, injectTo: 'head' },
+        ]
+      },
+    },
+  }
+}
+
 function paliDataPlugin() {
   const D = p => resolve(__dirname, 'data', p)
   let combined = {}
@@ -65,6 +86,7 @@ export default defineConfig({
     },
   },
   plugins: [
+    baiduAnalyticsPlugin(),
     paliDataPlugin(),
     htmlMinifier({
       minifierOptions: {
