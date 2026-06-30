@@ -28,7 +28,6 @@ function baiduAnalyticsPlugin() {
   return {
     name: 'baidu-analytics',
     transformIndexHtml: {
-      order: 'post',
       handler(html, ctx) {
         return [
           { tag: 'script', children: snippet, injectTo: 'head' },
